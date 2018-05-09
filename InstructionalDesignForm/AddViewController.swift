@@ -11,31 +11,50 @@ import CoreData
 
 class AddViewController: UIViewController {
     var coreDataStack: CoreDataStack!
-    //Variables for transferring infromation between viewa
+    //Variables for transferring infromation between views
     var moveID: Int = 0
     var moveData: [Data] = []
     var moveName: String = ""
 
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var courseField: UITextField!
+    @IBOutlet weak var descriptionField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print("\(moveID)")
+        print("\(moveData)")
+        print("\(moveName)")
+        nameField.text = moveName
     }
+    var currentName = "No Name Given"
+    var currentCourse = "No Course Given"
+    var currentDescription = "No Description Given"
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func saveAction(_ sender: Any) {
+        currentName = nameField.text!
+        currentCourse = courseField.text!
+        currentDescription = descriptionField.text!
+        let currentData = Data(context: self.coreDataStack.managedContext)
+        currentData.name = nameField.text
+        currentData.course = courseField.text
+        currentData.descriptiom = descriptionField.text
+        self.coreDataStack.saveContext()
+        print("Current name is \(currentName)")
+        clearForm()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func newAction(_ sender: Any) {
+        clearForm()
     }
-    */
 
+}
+extension AddViewController {
+    func clearForm() {
+        nameField.text = ""
+        courseField.text = ""
+        descriptionField.text = ""
+        reloadInputViews()
+    }
 }

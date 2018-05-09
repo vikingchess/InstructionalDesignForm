@@ -73,8 +73,6 @@ class ViewController: UIViewController {
         }
     }
 }
-
-
 //Mark: - Helper methods
 extension ViewController {
     func fetchAndReload(){
