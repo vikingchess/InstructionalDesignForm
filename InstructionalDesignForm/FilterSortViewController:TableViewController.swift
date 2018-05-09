@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class FilterSortViewController_TableViewController: UITableViewController {
+        var coreDataStack: CoreDataStack!
 
     override func viewDidLoad() {
         super.viewDidLoad()

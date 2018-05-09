@@ -7,8 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class AddViewController: UIViewController {
+    var coreDataStack: CoreDataStack!
+    //Variables for transferring infromation between viewa
+    var moveID: Int = 0
+    var moveData: [Data] = []
+    var moveName: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
