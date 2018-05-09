@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
         }
         viewController.coreDataStack = coreDataStack
-        //importDataIfNeeded()
+        importDataIfNeeded()
         return true
     }
     
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         coreDataStack.saveContext()
     }
-    /*
+    
      func importDataIfNeeded() {
      let fetchRequest = NSFetchRequest<Data>(entityName: "Data")
      let count = try! coreDataStack.managedContext.count(for: fetchRequest)
@@ -57,6 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      seedData.descriptiom = "Seed Data Description"
      coreDataStack.saveContext()
      }
-     */
+    
 }
 
