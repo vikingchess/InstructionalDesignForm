@@ -13,6 +13,8 @@
 		55FF30C420A3587300C63A4F /* InstructionalDesignForm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30C220A3587300C63A4F /* InstructionalDesignForm.xcdatamodeld */; };
 		55FF30C620A3587E00C63A4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55FF30C520A3587E00C63A4F /* Assets.xcassets */; };
 		55FF30C920A3587E00C63A4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FF30C720A3587E00C63A4F /* LaunchScreen.storyboard */; };
+		55FF30D220A35B3A00C63A4F /* Data+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D020A35B3A00C63A4F /* Data+CoreDataClass.swift */; };
+		55FF30D320A35B3A00C63A4F /* Data+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D120A35B3A00C63A4F /* Data+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		55FF30C520A3587E00C63A4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55FF30C820A3587E00C63A4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55FF30CA20A3587E00C63A4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55FF30D020A35B3A00C63A4F /* Data+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CoreDataClass.swift"; sourceTree = "<group>"; };
+		55FF30D120A35B3A00C63A4F /* Data+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,8 @@
 		55FF30AF20A3587300C63A4F = {
 			isa = PBXGroup;
 			children = (
+				55FF30D020A35B3A00C63A4F /* Data+CoreDataClass.swift */,
+				55FF30D120A35B3A00C63A4F /* Data+CoreDataProperties.swift */,
 				55FF30BA20A3587300C63A4F /* InstructionalDesignForm */,
 				55FF30B920A3587300C63A4F /* Products */,
 			);
@@ -139,7 +145,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				55FF30BE20A3587300C63A4F /* ViewController.swift in Sources */,
+				55FF30D220A35B3A00C63A4F /* Data+CoreDataClass.swift in Sources */,
 				55FF30C420A3587300C63A4F /* InstructionalDesignForm.xcdatamodeld in Sources */,
+				55FF30D320A35B3A00C63A4F /* Data+CoreDataProperties.swift in Sources */,
 				55FF30BC20A3587300C63A4F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +302,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flom.InstructionalDesignForm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -312,7 +320,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flom.InstructionalDesignForm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
