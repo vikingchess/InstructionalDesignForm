@@ -34,7 +34,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        super.viewDidLoad()
         guard let model = coreDataStack.managedContext.persistentStoreCoordinator?.managedObjectModel,
             let fetchRequest = model.fetchRequestTemplate(forName: "FetchRequest") as? NSFetchRequest<Data> else {
                 return

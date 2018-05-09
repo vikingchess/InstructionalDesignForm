@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
         }
         viewController.coreDataStack = coreDataStack
-        importDataIfNeeded()
+        //importDataIfNeeded()
         return true
     }
     
