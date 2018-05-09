@@ -16,6 +16,8 @@
 		55FF30D220A35B3A00C63A4F /* Data+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D020A35B3A00C63A4F /* Data+CoreDataClass.swift */; };
 		55FF30D320A35B3A00C63A4F /* Data+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D120A35B3A00C63A4F /* Data+CoreDataProperties.swift */; };
 		55FF30D520A35BC400C63A4F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D420A35BC400C63A4F /* CoreDataStack.swift */; };
+		55FF30D720A3616700C63A4F /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D620A3616700C63A4F /* AddViewController.swift */; };
+		55FF30D920A3619100C63A4F /* FilterSortViewController:TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		55FF30D020A35B3A00C63A4F /* Data+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CoreDataClass.swift"; sourceTree = "<group>"; };
 		55FF30D120A35B3A00C63A4F /* Data+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		55FF30D420A35BC400C63A4F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		55FF30D620A3616700C63A4F /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterSortViewController:TableViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				55FF30BB20A3587300C63A4F /* AppDelegate.swift */,
 				55FF30BD20A3587300C63A4F /* ViewController.swift */,
 				55FF30BF20A3587300C63A4F /* Main.storyboard */,
+				55FF30D620A3616700C63A4F /* AddViewController.swift */,
+				55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */,
 				55FF30C520A3587E00C63A4F /* Assets.xcassets */,
 				55FF30C720A3587E00C63A4F /* LaunchScreen.storyboard */,
 				55FF30CA20A3587E00C63A4F /* Info.plist */,
@@ -149,6 +155,8 @@
 			files = (
 				55FF30BE20A3587300C63A4F /* ViewController.swift in Sources */,
 				55FF30D220A35B3A00C63A4F /* Data+CoreDataClass.swift in Sources */,
+				55FF30D720A3616700C63A4F /* AddViewController.swift in Sources */,
+				55FF30D920A3619100C63A4F /* FilterSortViewController:TableViewController.swift in Sources */,
 				55FF30C420A3587300C63A4F /* InstructionalDesignForm.xcdatamodeld in Sources */,
 				55FF30D520A35BC400C63A4F /* CoreDataStack.swift in Sources */,
 				55FF30D320A35B3A00C63A4F /* Data+CoreDataProperties.swift in Sources */,
