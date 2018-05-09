@@ -15,6 +15,7 @@
 		55FF30C920A3587E00C63A4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FF30C720A3587E00C63A4F /* LaunchScreen.storyboard */; };
 		55FF30D220A35B3A00C63A4F /* Data+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D020A35B3A00C63A4F /* Data+CoreDataClass.swift */; };
 		55FF30D320A35B3A00C63A4F /* Data+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D120A35B3A00C63A4F /* Data+CoreDataProperties.swift */; };
+		55FF30D520A35BC400C63A4F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D420A35BC400C63A4F /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		55FF30CA20A3587E00C63A4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55FF30D020A35B3A00C63A4F /* Data+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CoreDataClass.swift"; sourceTree = "<group>"; };
 		55FF30D120A35B3A00C63A4F /* Data+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		55FF30D420A35BC400C63A4F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 			children = (
 				55FF30D020A35B3A00C63A4F /* Data+CoreDataClass.swift */,
 				55FF30D120A35B3A00C63A4F /* Data+CoreDataProperties.swift */,
+				55FF30D420A35BC400C63A4F /* CoreDataStack.swift */,
 				55FF30BA20A3587300C63A4F /* InstructionalDesignForm */,
 				55FF30B920A3587300C63A4F /* Products */,
 			);
@@ -147,6 +150,7 @@
 				55FF30BE20A3587300C63A4F /* ViewController.swift in Sources */,
 				55FF30D220A35B3A00C63A4F /* Data+CoreDataClass.swift in Sources */,
 				55FF30C420A3587300C63A4F /* InstructionalDesignForm.xcdatamodeld in Sources */,
+				55FF30D520A35BC400C63A4F /* CoreDataStack.swift in Sources */,
 				55FF30D320A35B3A00C63A4F /* Data+CoreDataProperties.swift in Sources */,
 				55FF30BC20A3587300C63A4F /* AppDelegate.swift in Sources */,
 			);
