@@ -74,15 +74,15 @@
 			isa = PBXGroup;
 			children = (
 				55FF30BB20A3587300C63A4F /* AppDelegate.swift */,
+				55FF30D620A3616700C63A4F /* AddViewController.swift */,
+				55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */,
 				55FF30BD20A3587300C63A4F /* ViewController.swift */,
 				55FF30BF20A3587300C63A4F /* Main.storyboard */,
-				55FF30D620A3616700C63A4F /* AddViewController.swift */,
-				55FF30DC20A48D2F00C63A4F /* IDTextField.swift */,
-				55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */,
 				55FF30C520A3587E00C63A4F /* Assets.xcassets */,
 				55FF30C720A3587E00C63A4F /* LaunchScreen.storyboard */,
 				55FF30CA20A3587E00C63A4F /* Info.plist */,
 				55FF30C220A3587300C63A4F /* InstructionalDesignForm.xcdatamodeld */,
+				55FF30DC20A48D2F00C63A4F /* IDTextField.swift */,
 				55FF30DA20A4825E00C63A4F /* IDTextView.swift */,
 			);
 			path = InstructionalDesignForm;

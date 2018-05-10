@@ -5,6 +5,7 @@
 //  Created by David Flom on 5/9/18.
 //  Copyright © 2018 David Flom. All rights reserved.
 //
+//  TODO Remove unused code...seed data for sure is not needed
 
 import UIKit
 import CoreData
@@ -14,7 +15,7 @@ class ViewController: UIViewController {
     // Identify segues for view control name is from storyboard
     private let filterViewControllerSegueIdentifier = "toFilterViewController"
     private let detailViewControllerSegueIdentifier = "toDetailsScreen"
-    // identfy cells for reuse name is from storyboard
+    // Identfy storyboard cells for reuse
     fileprivate let dataCellIdentifier = "DataCell"
     var coreDataStack: CoreDataStack!
     lazy var fetchedResultsController: NSFetchedResultsController<Data> = {
@@ -64,6 +65,18 @@ class ViewController: UIViewController {
                 moveVC.moveData = [currentData[selectedRowIndex!.row]]
                 let data = currentData[selectedRowIndex!.row]
                 moveVC.moveName = data.name!
+                moveVC.moveCourse = data.course!
+                moveVC.moveInstructor = data.instructor
+                moveVC.moveDescription = data.descriptiom
+                moveVC.moveLocation = data.location
+                moveVC.moveLO = data.learningobjectives
+                moveVC.moveLA = data.learningactivities
+                moveVC.movePre = data.preassessment
+                moveVC.moveFormative = data.formative
+                moveVC.moveSummative = data.summative
+                moveVC.moveUDL = data.udl
+                moveVC.moveNotes = data.notes
+                //TODO need to figure how to move images and dates
                 
                 
             default:

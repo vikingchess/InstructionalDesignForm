@@ -5,11 +5,18 @@
 //  Created by David Flom on 5/9/18.
 //  Copyright © 2018 David Flom. All rights reserved.
 //
+//  TODO complete clear form
+//  TODO complete save action
+//  TODO hook up image view
+//  TODO add remaining tranfer variables both on add and viewcontrller pages
+
+
 
 import UIKit
 import CoreData
 
 class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    //MARK: - Properties
     var coreDataStack: CoreDataStack!
     //setup auto start date label formatting
     var dateFormatter: DateFormatter = {
@@ -22,8 +29,24 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     //Variables for transferring infromation between views
     var moveID: Int = 0
     var moveData: [Data] = []
-    var moveName: String = ""
-
+    var moveName: String?
+    var moveStartDate: Date?
+    var moveCourse: String?
+    var moveDescription: String?
+    var moveInstructor: String?
+    var moveLocation: String?
+    var moveLO: String?
+    var moveLA: String?
+    var movePre:String?
+    var moveFormative: String?
+    var moveSummative: String?
+    var moveUDL: String?
+    var moveNotes: String?
+    var moveStatus: String?
+    var moveEndDate: Date?
+    var moveImage: UIImage?
+    
+    //MARK: - Outlets
     @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var nameField: IDTextField!
     @IBOutlet weak var courseField: IDTextField!
@@ -39,20 +62,37 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var notesField: IDTextView!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak var statusPicker: UIPickerView!
+    @IBOutlet weak var imageField: UIImageView!
     //Status list for picker
     private let status = ["Started", "25% Completed", "50% completed", "75% completed", "Completed"]
     
+    //MARK: - View Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(moveID)")
         print("\(moveData)")
-        print("\(moveName)")
+        print("\(String(describing: moveName))")
         nameField.text = moveName
+        courseField.text = moveCourse
+        descriptionField.text = moveDescription
+        instructorField.text = moveInstructor
+        locationField.text = moveLocation
+        learningObjectivesField.text = moveLO
+        learningActvitiesField.text = moveLA
+        preassessmentField.text = movePre
+        formativeField.text = moveFormative
+        summativeField.text = moveSummative
+        udlField.text = moveUDL
+        notesField.text = moveNotes
+        //TODO need to figure how to move status
+        //TODO need to figure how to move image
+        //TODO need to figure how to move dates
+        //TODO make this an if then statement to check for a value before updating
         startDate.text = dateFormatter.string(from: todaysDate as Date)
         
     }
 
-    //MARK: Actions
+    //MARK: - Actions
     @IBAction func saveAction(_ sender: Any) {
 
         let currentData = Data(context: self.coreDataStack.managedContext)
@@ -88,12 +128,14 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
 
 }
-extension AddViewController {
-    func clearForm() {
-        nameField.text = ""
-        courseField.text = ""
-        descriptionField.text = ""
-        reloadInputViews()
-    }
-}
+
+        //MARK: - Helper Methods
+        extension AddViewController {
+            func clearForm() {
+                nameField.text = ""
+                courseField.text = ""
+                descriptionField.text = ""
+                reloadInputViews()
+            }
+        }
 

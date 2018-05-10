@@ -453,6 +453,7 @@
                         <outlet property="descriptionField" destination="Rf3-vY-Vzh" id="cZg-Xn-dvE"/>
                         <outlet property="endDatePicker" destination="tVy-9s-c80" id="rfK-Xd-9hE"/>
                         <outlet property="formativeField" destination="kBH-qX-BZJ" id="ssr-tF-C0L"/>
+                        <outlet property="imageField" destination="Sao-Mz-YfF" id="XHK-Vh-CAL"/>
                         <outlet property="instructorField" destination="poF-r5-ltY" id="8J5-ld-5DZ"/>
                         <outlet property="learningActvitiesField" destination="6ol-ft-fc9" id="mx1-xy-AqH"/>
                         <outlet property="learningObjectivesField" destination="jgt-KR-eO7" id="v6D-uY-6BF"/>
