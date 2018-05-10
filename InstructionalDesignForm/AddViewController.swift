@@ -11,14 +11,32 @@ import CoreData
 
 class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var coreDataStack: CoreDataStack!
+    //setup auto start date label formatting
+    var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    var todaysDate = NSDate()
     //Variables for transferring infromation between views
     var moveID: Int = 0
     var moveData: [Data] = []
     var moveName: String = ""
 
+    @IBOutlet weak var startDate: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var courseField: UITextField!
     @IBOutlet weak var descriptionField: UITextField!
+    @IBOutlet weak var instructorField: UITextField!
+    @IBOutlet weak var locationField: UITextField!
+    @IBOutlet weak var learningObjectivesField: IDTextView!
+    @IBOutlet weak var learningActvitiesField: IDTextView!
+    @IBOutlet weak var preassessmentField: IDTextView!
+    @IBOutlet weak var formativeField: IDTextView!
+    @IBOutlet weak var summativeField: IDTextView!
+    @IBOutlet weak var udlField: IDTextView!
+    @IBOutlet weak var notesField: IDTextView!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak var statusPicker: UIPickerView!
     //Status list for picker
@@ -30,16 +48,13 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         print("\(moveData)")
         print("\(moveName)")
         nameField.text = moveName
+        startDate.text = dateFormatter.string(from: todaysDate as Date)
+        
     }
-    var currentName = "No Name Given"
-    var currentCourse = "No Course Given"
-    var currentDescription = "No Description Given"
 
-    
+    //MARK: Actions
     @IBAction func saveAction(_ sender: Any) {
-        currentName = nameField.text!
-        currentCourse = courseField.text!
-        currentDescription = descriptionField.text!
+
         let currentData = Data(context: self.coreDataStack.managedContext)
         currentData.name = nameField.text
         currentData.course = courseField.text
@@ -54,7 +69,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         currentData.status = selectedStatus
         
         self.coreDataStack.saveContext()
-        print("Current name is \(currentName)")
         clearForm()
     }
     
