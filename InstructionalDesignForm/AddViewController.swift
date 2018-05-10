@@ -25,11 +25,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var moveName: String = ""
 
     @IBOutlet weak var startDate: UILabel!
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var courseField: UITextField!
-    @IBOutlet weak var descriptionField: UITextField!
-    @IBOutlet weak var instructorField: UITextField!
-    @IBOutlet weak var locationField: UITextField!
+    @IBOutlet weak var nameField: IDTextField!
+    @IBOutlet weak var courseField: IDTextField!
+    @IBOutlet weak var descriptionField: IDTextField!
+    @IBOutlet weak var instructorField: IDTextField!
+    @IBOutlet weak var locationField: IDTextField!
     @IBOutlet weak var learningObjectivesField: IDTextView!
     @IBOutlet weak var learningActvitiesField: IDTextView!
     @IBOutlet weak var preassessmentField: IDTextView!

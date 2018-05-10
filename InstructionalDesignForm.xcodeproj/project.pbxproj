@@ -19,6 +19,7 @@
 		55FF30D720A3616700C63A4F /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D620A3616700C63A4F /* AddViewController.swift */; };
 		55FF30D920A3619100C63A4F /* FilterSortViewController:TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */; };
 		55FF30DB20A4825E00C63A4F /* IDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30DA20A4825E00C63A4F /* IDTextView.swift */; };
+		55FF30DD20A48D2F00C63A4F /* IDTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30DC20A48D2F00C63A4F /* IDTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		55FF30D620A3616700C63A4F /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterSortViewController:TableViewController.swift"; sourceTree = "<group>"; };
 		55FF30DA20A4825E00C63A4F /* IDTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDTextView.swift; sourceTree = "<group>"; };
+		55FF30DC20A48D2F00C63A4F /* IDTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				55FF30BD20A3587300C63A4F /* ViewController.swift */,
 				55FF30BF20A3587300C63A4F /* Main.storyboard */,
 				55FF30D620A3616700C63A4F /* AddViewController.swift */,
+				55FF30DC20A48D2F00C63A4F /* IDTextField.swift */,
 				55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */,
 				55FF30C520A3587E00C63A4F /* Assets.xcassets */,
 				55FF30C720A3587E00C63A4F /* LaunchScreen.storyboard */,
@@ -162,6 +165,7 @@
 				55FF30D920A3619100C63A4F /* FilterSortViewController:TableViewController.swift in Sources */,
 				55FF30C420A3587300C63A4F /* InstructionalDesignForm.xcdatamodeld in Sources */,
 				55FF30D520A35BC400C63A4F /* CoreDataStack.swift in Sources */,
+				55FF30DD20A48D2F00C63A4F /* IDTextField.swift in Sources */,
 				55FF30DB20A4825E00C63A4F /* IDTextView.swift in Sources */,
 				55FF30D320A35B3A00C63A4F /* Data+CoreDataProperties.swift in Sources */,
 				55FF30BC20A3587300C63A4F /* AppDelegate.swift in Sources */,
