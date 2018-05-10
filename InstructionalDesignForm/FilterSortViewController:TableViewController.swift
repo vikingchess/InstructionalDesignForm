@@ -5,6 +5,9 @@
 //  Created by David Flom on 5/9/18.
 //  Copyright © 2018 David Flom. All rights reserved.
 //
+// TODO wireup cancel button
+// TODO wireup search button
+// TODO add addtioanl filters and sorts
 
 import UIKit
 import CoreData
@@ -16,7 +19,13 @@ class FilterSortViewController_TableViewController: UITableViewController {
         return NSPredicate(format: "%K LIKE[c] %@", #keyPath(Data.name),"*")
     }()
     
+    //MARK: - Actions
+    @IBAction func cancelAction(_ sender: Any) {
+        //TODO Should the form be cleared before returning to project screen?
+    }
     
+    @IBAction func searchAction(_ sender: Any) {
+    }
     //MARK: - Outlets
     
     @IBOutlet weak var numberOfProjects: UILabel!

@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     lazy var fetchedResultsController: NSFetchedResultsController<Data> = {
         let fetchRequestForController: NSFetchRequest<Data> = Data.fetchRequest()
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequestForController, managedObjectContext: coreDataStack.managedContext, sectionNameKeyPath: nil, cacheName: nil)
-        fetchedResultsController.delegate = self as! NSFetchedResultsControllerDelegate
+        fetchedResultsController.delegate = (self as! NSFetchedResultsControllerDelegate)
         return fetchedResultsController
     }()
     // pulls the fetch request from the gui for the Data
