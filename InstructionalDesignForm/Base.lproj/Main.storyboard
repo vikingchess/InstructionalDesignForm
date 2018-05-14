@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LaS-dk-8U7">
-                                <rect key="frame" x="16" y="20" width="798" height="1072"/>
+                                <rect key="frame" x="16" y="64" width="798" height="1028"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataCell" textLabel="t3C-XH-bhX" detailTextLabel="33F-ez-ApE" style="IBUITableViewCellStyleValue1" id="Wjl-uG-Xm8">
@@ -82,18 +83,27 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c9w-me-YSq"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Projects" id="Too-3I-3qQ">
                         <barButtonItem key="leftBarButtonItem" title="Sort and Filter" id="sAJ-Bf-pPI">
                             <connections>
                                 <segue destination="4iT-eo-xqH" kind="presentation" identifier="toFilterViewController" id="TVN-hN-uBu"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tvD-kj-YJA">
-                            <connections>
-                                <segue destination="WZe-v6-NDV" kind="show" identifier="toDetailsScreen" id="pRq-gL-8jM"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="tvD-kj-YJA">
+                                <connections>
+                                    <segue destination="WZe-v6-NDV" kind="show" identifier="toDetailsScreen" id="pRq-gL-8jM"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="Xwd-E6-0Ur">
+                                <connections>
+                                    <action selector="refreshAction:" destination="5xP-g2-qHW" id="cxI-Ti-0O5"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="LaS-dk-8U7" id="xfJ-Ds-04e"/>
                     </connections>
@@ -209,14 +219,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1x8-Gx-7fv">
-                                <rect key="frame" x="96" y="1018" width="34" height="74"/>
+                                <rect key="frame" x="96" y="1018" width="34" height="30"/>
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveAction:" destination="WZe-v6-NDV" eventType="touchUpInside" id="q5n-gY-Vod"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zO-lb-gXm">
-                                <rect key="frame" x="615" y="1062" width="164" height="30"/>
+                                <rect key="frame" x="615" y="1018" width="164" height="30"/>
                                 <state key="normal" title="New Project/Clear Form"/>
                                 <connections>
                                     <action selector="newAction:" destination="WZe-v6-NDV" eventType="touchUpInside" id="NCX-TL-G4a"/>
@@ -473,6 +483,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="TVN-hN-uBu"/>
         <segue reference="IzP-4r-BXD"/>
         <segue reference="kG5-rJ-YCE"/>
     </inferredMetricsTieBreakers>

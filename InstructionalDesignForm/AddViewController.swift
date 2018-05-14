@@ -43,7 +43,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var moveUDL: String?
     var moveNotes: String?
     var moveStatus: String?
-    var moveEndDate: Date?
+    //var moveEndDate: Date = NSDate() as Date
     var moveImage: UIImage?
     
     //MARK: - Outlets
@@ -66,12 +66,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     //Status list for picker
     private let status = ["Started", "25% Completed", "50% completed", "75% completed", "Completed"]
     
-    //MARK: - View Life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("\(moveID)")
-        print("\(moveData)")
-        print("\(String(describing: moveName))")
+
+    fileprivate func populateDetails () {
         nameField.text = moveName
         courseField.text = moveCourse
         descriptionField.text = moveDescription
@@ -88,17 +84,48 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         //TODO need to figure how to move image
         //TODO need to figure how to move dates
         //TODO make this an if then statement to check for a value before updating
-        startDate.text = dateFormatter.string(from: todaysDate as Date)
+        // Protect startdate against a nil value
+        guard  let date = moveStartDate as Date? else {
+            return
+        }
+        startDate.text = dateFormatter.string(from: (date))
         
+        //endDatePicker.date = moveEndDate
+    }
+    //MARK: - View Life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("\(moveID)")
+        print("\(moveData)")
+        print("\(String(describing: moveName))")
+        if moveName == nil {
+        startDate.text = dateFormatter.string(from: todaysDate as Date)
+            return
+        } else {
+        populateDetails ()
+        }
     }
 
     //MARK: - Actions
+    //TODO add save contect for remaining fields
     @IBAction func saveAction(_ sender: Any) {
-
+        //TODO Need to advance out of last field or receive anr error saving problem with text views?
         let currentData = Data(context: self.coreDataStack.managedContext)
         currentData.name = nameField.text
         currentData.course = courseField.text
         currentData.descriptiom = descriptionField.text
+        currentData.instructor = instructorField.text
+        currentData.location = locationField.text
+        currentData.learningobjectives = learningObjectivesField.text
+        currentData.learningactivities = learningActvitiesField.text
+        currentData.preassessment = preassessmentField.text
+        currentData.formative = formativeField.text
+        currentData.summative = summativeField.text
+        currentData.udl = udlField.text
+        currentData.notes = notesField.text
+        currentData.startdate = NSDate()
+        
+        
         //Grab Date from picker and put in into the duedate field
         let date = NSDate()
         endDatePicker.setDate(date as Date, animated: false)
@@ -130,11 +157,22 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 }
 
         //MARK: - Helper Methods
+        //TODO Add code to clear remaining fields
         extension AddViewController {
             func clearForm() {
                 nameField.text = ""
                 courseField.text = ""
                 descriptionField.text = ""
+                instructorField.text = ""
+                locationField.text = ""
+                learningObjectivesField.text = ""
+                learningActvitiesField.text = ""
+                preassessmentField.text = ""
+                formativeField.text = ""
+                summativeField.text = ""
+                udlField.text = ""
+                notesField.text = ""
+                startDate.text = dateFormatter.string(from: todaysDate as Date)
                 reloadInputViews()
             }
         }

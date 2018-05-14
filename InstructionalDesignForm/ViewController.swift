@@ -12,6 +12,13 @@ import CoreData
 
 class ViewController: UIViewController {
     // MARK: - Properties
+    //setup auto start date label formatting
+    var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter
+    }()
     // Identify segues for view control name is from storyboard
     private let filterViewControllerSegueIdentifier = "toFilterViewController"
     private let detailViewControllerSegueIdentifier = "toDetailsScreen"
@@ -29,7 +36,7 @@ class ViewController: UIViewController {
     //var puts the pulled data from fetch request into an array to populate the table
     var currentData: [Data] = []
     var asyncFetchRequest: NSAsynchronousFetchRequest<Data>?
-//MARK: - Outlets
+    //MARK: - Outlets
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -43,6 +50,11 @@ class ViewController: UIViewController {
         self.fetchRequest = fetchRequest
         fetchAndReload()
     }
+      //MARK: - Actions
+    @IBAction func refreshAction(_ sender: Any) {
+        fetchAndReload()
+    }
+    
     //MARK: - Segues
     // Navigation between views using a switch case to determine which segue to use
     // Different code because filter is a table view and details is a view controller
@@ -76,6 +88,11 @@ class ViewController: UIViewController {
                 moveVC.moveSummative = data.summative
                 moveVC.moveUDL = data.udl
                 moveVC.moveNotes = data.notes
+                //data.startdate as Date?
+                guard case moveVC.moveStartDate = data.startdate as Date? else {
+                    return
+                }
+                //startDate.text = dateFormatter.string(from: moveStartDate as Date)
                 //TODO need to figure how to move images and dates
                 
                 
