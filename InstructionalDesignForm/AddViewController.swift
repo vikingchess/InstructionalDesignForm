@@ -18,13 +18,16 @@ import CoreData
 class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     //MARK: - Properties
     var coreDataStack: CoreDataStack!
-    //setup auto start date label formatting
+    //setup auto start date label formatting Date to String
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .none
         return formatter
     }()
+
+    //Date to string
+    
     var todaysDate = NSDate()
     //Variables for transferring infromation between views
     var moveID: Int = 0
@@ -85,7 +88,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         //TODO need to figure how to move dates
         //TODO make this an if then statement to check for a value before updating
         // Protect startdate against a nil value
-        guard  let date = moveStartDate as Date? else {
+        guard let date = moveStartDate as Date? else {
             return
         }
         startDate.text = dateFormatter.string(from: (date))
@@ -123,7 +126,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         currentData.summative = summativeField.text
         currentData.udl = udlField.text
         currentData.notes = notesField.text
-        currentData.startdate = NSDate()
+        currentData.startdate = todaysDate
         
         
         //Grab Date from picker and put in into the duedate field
@@ -142,6 +145,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBAction func newAction(_ sender: Any) {
         clearForm()
     }
+    
     //MARK: - Picker data source methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -176,4 +180,12 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 reloadInputViews()
             }
         }
+extension String {
+    func toDate(dateFormat format: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone?
+        return dateFormatter.date(from: self)!
+    }
+}
 
