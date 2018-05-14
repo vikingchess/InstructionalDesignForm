@@ -50,7 +50,7 @@ class ViewController: UIViewController {
         self.fetchRequest = fetchRequest
         fetchAndReload()
     }
-      //MARK: - Actions
+    //MARK: - Actions
     @IBAction func refreshAction(_ sender: Any) {
         fetchAndReload()
     }
@@ -130,8 +130,24 @@ extension ViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = data.course
         return cell
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+        
+    }
+
+ func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
+    guard let projectToDelete = currentData[indexPath.row] as? Data,
+    editingStyle == .delete else {
+        return
+        }
+    coreDataStack.managedContext.delete(projectToDelete)
+    currentData.remove(at: indexPath.row)
+    coreDataStack.saveContext()
+    tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
 }
-// TODO add delete functionality
+
 // TODO move information to detail screen
 
 // MARK: - UITableViewDelegate

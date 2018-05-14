@@ -160,7 +160,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
 }
 
-        //MARK: - Helper Methods
+    //MARK: - Helper Methods
         //TODO Add code to clear remaining fields
         extension AddViewController {
             func clearForm() {
@@ -180,6 +180,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 reloadInputViews()
             }
         }
+    //String to date funtion
+    //TODO not sure if I am going to use this
 extension String {
     func toDate(dateFormat format: String) -> Date {
         let dateFormatter = DateFormatter()
