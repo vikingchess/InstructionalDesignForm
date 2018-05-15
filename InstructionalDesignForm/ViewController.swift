@@ -13,6 +13,7 @@ import CoreData
 class ViewController: UIViewController {
     // MARK: - Properties
     //setup auto start date label formatting
+    //TODO check to see if needed on view controller
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -36,18 +37,22 @@ class ViewController: UIViewController {
     //var puts the pulled data from fetch request into an array to populate the table
     var currentData: [Data] = []
     var asyncFetchRequest: NSAsynchronousFetchRequest<Data>?
-    //MARK: - Outlets
     
+    //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
+    //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let model = coreDataStack.managedContext.persistentStoreCoordinator?.managedObjectModel,
+        fetchRequest = Data.fetchRequest()
+        
+        /* orginal code for getting the coredata information
+         guard let model = coreDataStack.managedContext.persistentStoreCoordinator?.managedObjectModel,
             let fetchRequest = model.fetchRequestTemplate(forName: "FetchRequest") as? NSFetchRequest<Data> else {
                 return
         }
-        
         self.fetchRequest = fetchRequest
+        */
         fetchAndReload()
     }
     //MARK: - Actions
@@ -94,8 +99,6 @@ class ViewController: UIViewController {
                 }
                 //startDate.text = dateFormatter.string(from: moveStartDate as Date)
                 //TODO need to figure how to move images and dates
-                
-                
             default:
                 return
             }
@@ -133,9 +136,8 @@ extension ViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-        
     }
-
+    //Funtion for deleting cells with a swipe
  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
     guard let projectToDelete = currentData[indexPath.row] as? Data,
     editingStyle == .delete else {
@@ -147,15 +149,11 @@ extension ViewController: UITableViewDataSource {
     tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
-
-// TODO move information to detail screen
-
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let rowValue = currentData[indexPath.row]
         print("Row \(rowValue)")
-        
     }
 }
 

@@ -18,6 +18,12 @@ class FilterSortViewController_TableViewController: UITableViewController {
     lazy var totalNumberOfProjects: NSPredicate = {
         return NSPredicate(format: "%K LIKE[c] %@", #keyPath(Data.name),"*")
     }()
+    lazy var startedProjects: NSPredicate = {
+        return NSPredicate(format: "%K == %@", #keyPath(Data.status), "Started")
+    }()
+    lazy var completedProjects: NSPredicate = {
+        return NSPredicate(format: "%K == %@", #keyPath(Data.status), "Completed")
+    }()
     
     //MARK: - Actions
     @IBAction func cancelAction(_ sender: Any) {
@@ -29,10 +35,15 @@ class FilterSortViewController_TableViewController: UITableViewController {
     //MARK: - Outlets
     
     @IBOutlet weak var numberOfProjects: UILabel!
+    @IBOutlet weak var numberOfStartedProjects: UILabel!
+    @IBOutlet weak var numberOfCompletedProjects: UILabel!
     
+    //MARK: - View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         populateNumberOfProjects()
+        populateStartedProjects()
+        populateCompletedProjects()
 
     }
 }
@@ -51,6 +62,32 @@ extension FilterSortViewController_TableViewController {
         }
     }
 }
-
-
+extension FilterSortViewController_TableViewController {
+    func populateStartedProjects(){
+        let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Data")
+        fetchRequest.resultType = .countResultType
+        fetchRequest.predicate = startedProjects
+        do {
+            let countResult = try coreDataStack.managedContext.fetch(fetchRequest)
+            let count = countResult.first!.intValue
+            numberOfStartedProjects.text = "\(count) projects that have been started but not worked on"
+        } catch let error as NSError {
+            print("could not fetch \(error)")
+        }
+    }
+}
+extension FilterSortViewController_TableViewController {
+    func populateCompletedProjects(){
+        let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Data")
+        fetchRequest.resultType = .countResultType
+        fetchRequest.predicate = completedProjects
+        do {
+            let countResult = try coreDataStack.managedContext.fetch(fetchRequest)
+            let count = countResult.first!.intValue
+            numberOfCompletedProjects.text = "\(count) projects that have been completed"
+        } catch let error as NSError {
+            print("could not fetch \(error)")
+        }
+    }
+}
 
