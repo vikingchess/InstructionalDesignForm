@@ -44,8 +44,32 @@ class ViewController: UIViewController {
     //MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let dataFetchRequest: NSFetchRequest<Data> = Data.fetchRequest()
+        fetchRequest = dataFetchRequest
+        asyncFetchRequest = NSAsynchronousFetchRequest<Data>(fetchRequest: dataFetchRequest) {
+            [unowned self] (result: NSAsynchronousFetchResult) in
+            
+            guard let currentData = result.finalResult else {
+                return
+            }
+            self.currentData = currentData
+            self.tableView.reloadData()
+        }
+        do {
+            guard let asyncFetchRequest = asyncFetchRequest else {
+                return
+            }
+            try coreDataStack.managedContext.execute(asyncFetchRequest)
+        } catch let error as NSError {
+            print(" Could not fetch \(error)")
+        }
+        
+        /* replacing this code with asynch fetch request
+         TODO Delte this block of code when new block works
         fetchRequest = Data.fetchRequest()
         fetchAndReload()
+    */
     }
     
     //MARK: - Actions
