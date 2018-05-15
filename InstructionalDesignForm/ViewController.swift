@@ -64,12 +64,6 @@ class ViewController: UIViewController {
         } catch let error as NSError {
             print(" Could not fetch \(error)")
         }
-        
-        /* replacing this code with asynch fetch request
-         TODO Delte this block of code when new block works
-        fetchRequest = Data.fetchRequest()
-        fetchAndReload()
-    */
     }
     
     //MARK: - Actions
@@ -136,6 +130,12 @@ extension ViewController {
         }
     }
 }
+//MARK: - IBActions
+extension ViewController {
+    @IBAction func unwindToProjectListViewController(_ segue: UIStoryboardSegue) {
+    }
+}
+
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     
