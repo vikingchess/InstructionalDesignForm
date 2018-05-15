@@ -35,7 +35,14 @@ class FilterSortViewController_TableViewController: UITableViewController {
     lazy var completedProjects: NSPredicate = {
         return NSPredicate(format: "%K == %@", #keyPath(Data.status), "Completed")
     }()
-    
+    lazy var nameSortDescriptor: NSSortDescriptor = {
+        let compareSelector = #selector(NSString.localizedStandardCompare(_:))
+        return NSSortDescriptor(key: #keyPath(Data.name), ascending: true, selector: compareSelector)
+    }()
+    lazy var courseSortDescriptor: NSSortDescriptor = {
+        let compareSelector = #selector(NSString.localizedStandardCompare(_:))
+        return NSSortDescriptor(key: #keyPath(Data.course), ascending: true, selector: compareSelector)
+    }()
     //MARK: - Actions
     @IBAction func cancelAction(_ sender: Any) {
         //TODO Should the form be cleared before returning to project screen?
@@ -50,6 +57,8 @@ class FilterSortViewController_TableViewController: UITableViewController {
     @IBOutlet weak var numberOfProjects: UILabel!
     @IBOutlet weak var numberOfStartedProjects: UILabel!
     @IBOutlet weak var numberOfCompletedProjects: UILabel!
+    @IBOutlet weak var projectNameSort: UILabel!
+    @IBOutlet weak var courseNameSort: UILabel!
     
     //MARK: - View LifeCycle
     override func viewDidLoad() {
@@ -116,6 +125,11 @@ extension FilterSortViewController_TableViewController {
             selectedPredicate = startedProjects
         case numberOfCompletedProjects:
             selectedPredicate = completedProjects
+        case projectNameSort:
+            selectedSortDescriptor = nameSortDescriptor
+        case courseNameSort:
+            selectedSortDescriptor = courseSortDescriptor
+            
         default:
             break
         }
