@@ -12,9 +12,20 @@
 import UIKit
 import CoreData
 
+protocol  FilterViewControllerDelegate: class {
+    func filterViewController (
+        filter: FilterSortViewController_TableViewController,
+        didSelectPredicate predicate: NSPredicate?,
+        sortDescriptor: NSSortDescriptor?)
+}
+
 class FilterSortViewController_TableViewController: UITableViewController {
     // MARK: - Properties
-        var coreDataStack: CoreDataStack!
+    var coreDataStack: CoreDataStack!
+    weak var delegate: FilterViewControllerDelegate?
+    var selectedSortDescriptor: NSSortDescriptor?
+    var selectedPredicate: NSPredicate?
+    
     lazy var totalNumberOfProjects: NSPredicate = {
         return NSPredicate(format: "%K LIKE[c] %@", #keyPath(Data.name),"*")
     }()
@@ -31,6 +42,8 @@ class FilterSortViewController_TableViewController: UITableViewController {
     }
     
     @IBAction func searchAction(_ sender: Any) {
+        delegate?.filterViewController(filter: self, didSelectPredicate: selectedPredicate, sortDescriptor: selectedSortDescriptor)
+        dismiss(animated: true)
     }
     //MARK: - Outlets
     
@@ -90,4 +103,24 @@ extension FilterSortViewController_TableViewController {
         }
     }
 }
+
+// MARK: - UITableView Delegate
+extension FilterSortViewController_TableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {
+            return
+        }
+        //Status Selection
+        switch cell {
+        case numberOfStartedProjects:
+            selectedPredicate = startedProjects
+        case numberOfCompletedProjects:
+            selectedPredicate = completedProjects
+        default:
+            break
+        }
+        cell.accessoryType = .checkmark
+    }
+}
+
 
