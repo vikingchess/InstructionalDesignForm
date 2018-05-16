@@ -15,9 +15,10 @@
 import UIKit
 import CoreData
 
-class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: - Properties
     var coreDataStack: CoreDataStack!
+    let imagePicker = UIImagePickerController()
     //setup auto start date label formatting Date to String
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -25,9 +26,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         formatter.timeStyle = .none
         return formatter
     }()
-
-    //Date to string
-    
     var todaysDate = NSDate()
     //Variables for transferring infromation between views
     var moveID: Int = 0
@@ -98,6 +96,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     //MARK: - View Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker.delegate = self
         print("\(moveID)")
         print("\(moveData)")
         print("\(String(describing: moveName))")
@@ -111,6 +110,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     //MARK: - Actions
     //TODO add save contect for remaining fields
+    @IBAction func selectImage(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+    }
     @IBAction func saveAction(_ sender: Any) {
         //TODO Need to advance out of last field or receive anr error saving problem with text views?
         let currentData = Data(context: self.coreDataStack.managedContext)
@@ -156,6 +160,12 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         //MARK: - Picker delegate methods
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return status[row]
+    }
+    //MARK: - Image picker Delegate methods
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        imageField.image = image
+        dismiss(animated: true, completion: nil)
     }
 
 }
