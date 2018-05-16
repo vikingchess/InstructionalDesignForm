@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
      func importDataIfNeeded() {
-     let fetchRequest = NSFetchRequest<Data>(entityName: "Data")
+     let fetchRequest = NSFetchRequest<Project>(entityName: "Project")
      let count = try! coreDataStack.managedContext.count(for: fetchRequest)
      guard count == 0 else {return}
      
@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      }
      }
      func importSeedData () {
-     let seedData = Data(context: coreDataStack.managedContext)
+     let seedData = Project(context: coreDataStack.managedContext)
      seedData.name = "Seed Data Name"
      seedData.course = "Seed Data Course Name"
      seedData.descriptiom = "Seed Data Description"

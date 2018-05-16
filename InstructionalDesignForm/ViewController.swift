@@ -26,17 +26,17 @@ class ViewController: UIViewController {
     // Identfy storyboard cells for reuse
     fileprivate let dataCellIdentifier = "DataCell"
     var coreDataStack: CoreDataStack!
-    lazy var fetchedResultsController: NSFetchedResultsController<Data> = {
-        let fetchRequestForController: NSFetchRequest<Data> = Data.fetchRequest()
+    lazy var fetchedResultsController: NSFetchedResultsController<Project> = {
+        let fetchRequestForController: NSFetchRequest<Project> = Project.fetchRequest()
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequestForController, managedObjectContext: coreDataStack.managedContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = (self as! NSFetchedResultsControllerDelegate)
         return fetchedResultsController
     }()
     // pulls the fetch request from the gui for the Data
-    var fetchRequest: NSFetchRequest<Data>?
+    var fetchRequest: NSFetchRequest<Project>?
     //var puts the pulled data from fetch request into an array to populate the table
-    var currentData: [Data] = []
-    var asyncFetchRequest: NSAsynchronousFetchRequest<Data>?
+    var currentData: [Project] = []
+    var asyncFetchRequest: NSAsynchronousFetchRequest<Project>?
     
     //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -45,9 +45,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataFetchRequest: NSFetchRequest<Data> = Data.fetchRequest()
+        let dataFetchRequest: NSFetchRequest<Project> = Project.fetchRequest()
         fetchRequest = dataFetchRequest
-        asyncFetchRequest = NSAsynchronousFetchRequest<Data>(fetchRequest: dataFetchRequest) {
+        asyncFetchRequest = NSAsynchronousFetchRequest<Project>(fetchRequest: dataFetchRequest) {
             [unowned self] (result: NSAsynchronousFetchResult) in
             
             guard let currentData = result.finalResult else {
@@ -104,7 +104,7 @@ class ViewController: UIViewController {
                 moveVC.moveSummative = data.summative
                 moveVC.moveUDL = data.udl
                 moveVC.moveNotes = data.notes
-                moveVC.imageField = UIImage(data: data.projectimage as! Data)
+                //moveVC.imageField = UIImage(data: data.projectimage as! Data)
                 
                 data.startdate as Date?
                 guard case moveVC.moveStartDate = data.startdate as Date? else {
@@ -158,7 +158,7 @@ extension ViewController: UITableViewDataSource {
     }
     //Funtion for deleting cells with a swipe
  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-    guard let projectToDelete = currentData[indexPath.row] as? Data,
+    guard let projectToDelete = currentData[indexPath.row] as? Project,
     editingStyle == .delete else {
         return
         }

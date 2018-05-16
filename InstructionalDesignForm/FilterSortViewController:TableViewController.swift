@@ -27,21 +27,21 @@ class FilterSortViewController_TableViewController: UITableViewController {
     var selectedPredicate: NSPredicate?
     
     lazy var totalNumberOfProjects: NSPredicate = {
-        return NSPredicate(format: "%K LIKE[c] %@", #keyPath(Data.name),"*")
+        return NSPredicate(format: "%K LIKE[c] %@", #keyPath(Project.name),"*")
     }()
     lazy var startedProjects: NSPredicate = {
-        return NSPredicate(format: "%K == %@", #keyPath(Data.status), "Started")
+        return NSPredicate(format: "%K == %@", #keyPath(Project.status), "Started")
     }()
     lazy var completedProjects: NSPredicate = {
-        return NSPredicate(format: "%K == %@", #keyPath(Data.status), "Completed")
+        return NSPredicate(format: "%K == %@", #keyPath(Project.status), "Completed")
     }()
     lazy var nameSortDescriptor: NSSortDescriptor = {
         let compareSelector = #selector(NSString.localizedStandardCompare(_:))
-        return NSSortDescriptor(key: #keyPath(Data.name), ascending: true, selector: compareSelector)
+        return NSSortDescriptor(key: #keyPath(Project.name), ascending: true, selector: compareSelector)
     }()
     lazy var courseSortDescriptor: NSSortDescriptor = {
         let compareSelector = #selector(NSString.localizedStandardCompare(_:))
-        return NSSortDescriptor(key: #keyPath(Data.course), ascending: true, selector: compareSelector)
+        return NSSortDescriptor(key: #keyPath(Project.course), ascending: true, selector: compareSelector)
     }()
     //MARK: - Actions
     @IBAction func cancelAction(_ sender: Any) {
@@ -72,7 +72,7 @@ class FilterSortViewController_TableViewController: UITableViewController {
 //MARK: - Helper methods
 extension FilterSortViewController_TableViewController {
     func populateNumberOfProjects(){
-        let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Data")
+        let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Project")
         fetchRequest.resultType = .countResultType
         fetchRequest.predicate = totalNumberOfProjects
         do {
@@ -86,7 +86,7 @@ extension FilterSortViewController_TableViewController {
 }
 extension FilterSortViewController_TableViewController {
     func populateStartedProjects(){
-        let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Data")
+        let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Project")
         fetchRequest.resultType = .countResultType
         fetchRequest.predicate = startedProjects
         do {
@@ -100,7 +100,7 @@ extension FilterSortViewController_TableViewController {
 }
 extension FilterSortViewController_TableViewController {
     func populateCompletedProjects(){
-        let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Data")
+        let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Project")
         fetchRequest.resultType = .countResultType
         fetchRequest.predicate = completedProjects
         do {

@@ -29,7 +29,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var todaysDate = NSDate()
     //Variables for transferring infromation between views
     var moveID: Int = 0
-    var moveData: [Data] = []
+    var moveData: [Project] = []
     var moveName: String?
     var moveStartDate: Date?
     var moveCourse: String?
@@ -118,7 +118,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     //TODO Future version add ability to take a picture directly in app
     @IBAction func saveAction(_ sender: Any) {
         //TODO Need to advance out of last field or receive anr error saving problem with text views?
-        let currentData = Data(context: self.coreDataStack.managedContext)
+        let currentData = Project(context: self.coreDataStack.managedContext)
         currentData.name = nameField.text
         currentData.course = courseField.text
         currentData.descriptiom = descriptionField.text

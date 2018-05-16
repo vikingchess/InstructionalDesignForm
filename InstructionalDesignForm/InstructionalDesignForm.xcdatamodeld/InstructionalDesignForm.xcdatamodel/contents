@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Data" representedClassName="Data" syncable="YES">
+    <entity name="Project" representedClassName="Project" syncable="YES">
         <attribute name="course" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptiom" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="duedate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -18,8 +18,8 @@
         <attribute name="summative" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="udl" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <fetchRequest name="FetchRequest" entity="Data"/>
+    <fetchRequest name="FetchRequest" entity="Project"/>
     <elements>
-        <element name="Data" positionX="-63" positionY="-18" width="128" height="285"/>
+        <element name="Project" positionX="-63" positionY="-18" width="128" height="285"/>
     </elements>
 </model>
