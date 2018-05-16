@@ -199,6 +199,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 udlField.text = ""
                 notesField.text = ""
                 startDate.text = dateFormatter.string(from: todaysDate as Date)
+                imageField.image = #imageLiteral(resourceName: "NoImage")
+                
                 reloadInputViews()
             }
         }

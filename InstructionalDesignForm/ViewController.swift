@@ -104,6 +104,8 @@ class ViewController: UIViewController {
                 moveVC.moveSummative = data.summative
                 moveVC.moveUDL = data.udl
                 moveVC.moveNotes = data.notes
+                moveVC.imageField = UIImage(data: data.projectimage as! Data)
+                
                 data.startdate as Date?
                 guard case moveVC.moveStartDate = data.startdate as Date? else {
                     return
