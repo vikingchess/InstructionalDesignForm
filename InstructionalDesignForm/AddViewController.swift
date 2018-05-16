@@ -7,7 +7,6 @@
 //
 //  TODO complete clear form
 //  TODO complete save action
-//  TODO hook up image view
 //  TODO add remaining tranfer variables both on add and viewcontrller pages
 
 
@@ -81,8 +80,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         summativeField.text = moveSummative
         udlField.text = moveUDL
         notesField.text = moveNotes
+        imageField.image = moveImage
         //TODO need to figure how to move status
-        //TODO need to figure how to move image
         //TODO need to figure how to move dates
         //TODO make this an if then statement to check for a value before updating
         // Protect startdate against a nil value
@@ -109,7 +108,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
 
     //MARK: - Actions
-    //TODO add save contect for remaining fields
     @IBAction func selectImage(_ sender: Any) {
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
@@ -183,7 +181,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 }
 
     //MARK: - Helper Methods
-        //TODO Add code to clear remaining fields
         extension AddViewController {
             func clearForm() {
                 nameField.text = ""

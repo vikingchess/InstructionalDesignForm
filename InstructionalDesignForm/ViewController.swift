@@ -104,7 +104,10 @@ class ViewController: UIViewController {
                 moveVC.moveSummative = data.summative
                 moveVC.moveUDL = data.udl
                 moveVC.moveNotes = data.notes
-                //moveVC.imageField = UIImage(data: data.projectimage as! Data)
+                moveVC.moveImage = UIImage(data: data.projectimage! as Data)
+                
+                //TODO retrieve image from core data and pass it into the detail screen
+                
                 
                 data.startdate as Date?
                 guard case moveVC.moveStartDate = data.startdate as Date? else {
@@ -148,8 +151,8 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: dataCellIdentifier, for: indexPath)
         let data = currentData[indexPath.row]
-        cell.textLabel?.text = data.name
-        cell.detailTextLabel?.text = data.course
+        cell.textLabel?.text = "\(data.name!), has status \(data.status!)"
+        cell.detailTextLabel?.text = "\(data.course!) is being taught by \(data.instructor!)"
         return cell
     }
 

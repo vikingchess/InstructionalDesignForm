@@ -6,8 +6,6 @@
 //  Copyright © 2018 David Flom. All rights reserved.
 //
 // TODO wireup cancel button
-// TODO wireup search button
-// TODO add addtioanl filters and sorts
 
 import UIKit
 import CoreData
@@ -45,7 +43,7 @@ class FilterSortViewController_TableViewController: UITableViewController {
     }()
     //MARK: - Actions
     @IBAction func cancelAction(_ sender: Any) {
-        //TODO Should the form be cleared before returning to project screen?
+
     }
     
     @IBAction func searchAction(_ sender: Any) {
