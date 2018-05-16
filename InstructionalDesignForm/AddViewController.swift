@@ -111,10 +111,11 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     //MARK: - Actions
     //TODO add save contect for remaining fields
     @IBAction func selectImage(_ sender: Any) {
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
+    //TODO Future version add ability to take a picture directly in app
     @IBAction func saveAction(_ sender: Any) {
         //TODO Need to advance out of last field or receive anr error saving problem with text views?
         let currentData = Data(context: self.coreDataStack.managedContext)
@@ -131,6 +132,14 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         currentData.udl = udlField.text
         currentData.notes = notesField.text
         currentData.startdate = todaysDate
+        //Convert image to NSData type for binary storage in core data
+        guard let imageData = UIImageJPEGRepresentation(imageField.image!, 1) else {
+            print("JPG Conversion error")
+            return
+        }
+        let imageNSData = imageData as NSData?
+        currentData.projectimage = imageNSData
+        
         
         
         //Grab Date from picker and put in into the duedate field
@@ -165,6 +174,9 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageField.image = image
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 

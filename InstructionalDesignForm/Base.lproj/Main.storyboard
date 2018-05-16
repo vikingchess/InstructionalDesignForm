@@ -481,8 +481,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4OP-Gq-LWx">
-                                <rect key="frame" x="385" y="650" width="89" height="30"/>
-                                <state key="normal" title="Select Image"/>
+                                <rect key="frame" x="385" y="650" width="177" height="30"/>
+                                <state key="normal" title="Select Image from Photos"/>
                                 <connections>
                                     <action selector="selectImage:" destination="WZe-v6-NDV" eventType="touchUpInside" id="jIh-hn-b4W"/>
                                 </connections>
