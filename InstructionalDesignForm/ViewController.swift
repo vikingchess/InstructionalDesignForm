@@ -106,11 +106,9 @@ class ViewController: UIViewController {
                 moveVC.moveNotes = data.notes
                 moveVC.moveImage = UIImage(data: data.projectimage! as Data)
                 moveVC.moveStatus = data.status
-                data.startdate as Date?
-                guard case moveVC.moveStartDate = data.startdate as Date? else {
-                    return
-                }
-                //startDate.text = dateFormatter.string(from: moveStartDate as Date)
+                moveVC.moveDueDate = data.duedate as Date?
+                moveVC.moveStartDate = data.startdate as Date?
+                
             default:
                 return
             }

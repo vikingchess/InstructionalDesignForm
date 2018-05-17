@@ -26,13 +26,16 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         formatter.timeStyle = .none
         return formatter
     }()
+    var statusRow: Int = 0
+    // Initialize date variable for use
     var todaysDate = NSDate()
     var selectedDate: Date = Date()
-    //Variables for transferring infromation between views
+    // Variables for transferring infromation between views
     var moveID: Int = 0
     var moveData: [Project] = []
     var moveName: String?
     var moveStartDate: Date?
+    var moveDueDate: Date?
     var moveCourse: String?
     var moveDescription: String?
     var moveInstructor: String?
@@ -45,9 +48,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var moveUDL: String?
     var moveNotes: String?
     var moveStatus: String?
-    //var moveEndDate: Date = NSDate() as Date
     var moveImage: UIImage?
-    var statusRow: Int = 0
+
     
     //MARK: - Outlets
     @IBOutlet weak var startDate: UILabel!
@@ -105,15 +107,15 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         imageField.image = moveImage
         findStatusRowNumber()
         statusPicker.selectRow(statusRow, inComponent: 0, animated: true)
-        //TODO need to figure how to move dates
+        print("\(moveDueDate)")
+        
+        endDatePicker.setDate((moveDueDate! as NSDate) as Date, animated: true)
         //TODO make this an if then statement to check for a value before updating
         // Protect startdate against a nil value
         guard let date = moveStartDate as Date? else {
             return
         }
         startDate.text = dateFormatter.string(from: (date))
-        
-        //endDatePicker.date = moveEndDate
     }
     //MARK: - View Life cycle
     override func viewDidLoad() {
