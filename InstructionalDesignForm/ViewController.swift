@@ -12,8 +12,8 @@ import CoreData
 
 class ViewController: UIViewController {
     // MARK: - Properties
-    //setup auto start date label formatting
-    //TODO check to see if needed on view controller
+    // setup auto start date label formatting
+    // TODO check to see if needed on view controller
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }()
     // pulls the fetch request from the gui for the Data
     var fetchRequest: NSFetchRequest<Project>?
-    //var puts the pulled data from fetch request into an array to populate the table
+    // var puts the pulled data from fetch request into an array to populate the table
     var currentData: [Project] = []
     var asyncFetchRequest: NSAsynchronousFetchRequest<Project>?
     
@@ -42,6 +42,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: - View Life Cycle
+    override func viewDidAppear(_ animated: Bool) {
+            fetchAndReload()
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,32 +119,33 @@ class ViewController: UIViewController {
         }
     }
 }
-//Mark: - Helper methods
-extension ViewController {
-    func fetchAndReload(){
-        guard let fetchRequest = fetchRequest else {
-            return
-        }
-        do {
-            currentData = try coreDataStack.managedContext.fetch(fetchRequest)
-            tableView.reloadData()
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+    //Mark: - Helper methods
+    extension ViewController {
+        func fetchAndReload(){
+            guard let fetchRequest = fetchRequest else {
+                return
+            }
+            do {
+                currentData = try coreDataStack.managedContext.fetch(fetchRequest)
+                tableView.reloadData()
+            } catch let error as NSError {
+                print("Could not fetch \(error), \(error.userInfo)")
+            }
         }
     }
-}
-//MARK: - IBActions
-extension ViewController {
-    @IBAction func unwindToProjectListViewController(_ segue: UIStoryboardSegue) {
+    //MARK: - IBActions
+    extension ViewController {
+        @IBAction func unwindToProjectListViewController(_ segue: UIStoryboardSegue) {
+            fetchAndReload()
+        }
     }
-}
 
-// MARK: - UITableViewDataSource
-extension ViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentData.count
-    }
+    // MARK: - UITableViewDataSource
+    extension ViewController: UITableViewDataSource {
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return currentData.count
+        }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: dataCellIdentifier, for: indexPath)
@@ -158,40 +163,40 @@ extension ViewController: UITableViewDataSource {
         return true
     }
     //Funtion for deleting cells with a swipe
- func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
-    guard let projectToDelete = currentData[indexPath.row] as? Project,
-    editingStyle == .delete else {
-        return
-        }
-    coreDataStack.managedContext.delete(projectToDelete)
-    currentData.remove(at: indexPath.row)
-    coreDataStack.saveContext()
-    tableView.deleteRows(at: [indexPath], with: .automatic)
-    }
-}
-// MARK: - UITableViewDelegate
-extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rowValue = currentData[indexPath.row]
-        print("Row \(rowValue)")
-    }
-}
-
-//MARK: - Filter view controller delegate
-extension ViewController: FilterViewControllerDelegate{
-    func filterViewController(filter: FilterSortViewController_TableViewController, didSelectPredicate predicate: NSPredicate?, sortDescriptor: NSSortDescriptor?) {
-        guard let fetchRequest = fetchRequest else {
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath){
+        guard let projectToDelete = currentData[indexPath.row] as? Project,
+        editingStyle == .delete else {
             return
+            }
+        coreDataStack.managedContext.delete(projectToDelete)
+        currentData.remove(at: indexPath.row)
+        coreDataStack.saveContext()
+        tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-        //reset or clear predicate and sort to nil
-        fetchRequest.predicate = nil
-        fetchRequest.sortDescriptors = nil
-        //set predicate and sort to new selections
-        fetchRequest.predicate = predicate
-        if let sr = sortDescriptor {
-            fetchRequest.sortDescriptors = [sr]
-        }
-        fetchAndReload()
-    }
 }
+    // MARK: - UITableViewDelegate
+    extension ViewController: UITableViewDelegate {
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let rowValue = currentData[indexPath.row]
+            print("Row \(rowValue)")
+        }
+    }
+
+    //MARK: - Filter view controller delegate
+    extension ViewController: FilterViewControllerDelegate{
+        func filterViewController(filter: FilterSortViewController_TableViewController, didSelectPredicate predicate: NSPredicate?, sortDescriptor: NSSortDescriptor?) {
+            guard let fetchRequest = fetchRequest else {
+                return
+            }
+            //reset or clear predicate and sort to nil
+            fetchRequest.predicate = nil
+            fetchRequest.sortDescriptors = nil
+            //set predicate and sort to new selections
+            fetchRequest.predicate = predicate
+            if let sr = sortDescriptor {
+                fetchRequest.sortDescriptors = [sr]
+            }
+            fetchAndReload()
+        }
+    }
 
