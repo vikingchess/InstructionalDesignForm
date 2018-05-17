@@ -93,7 +93,6 @@ class ViewController: UIViewController {
             case "sendDetails":
                 let addController = segue.destination as! AddViewController
                 addController.coreDataStack = self.coreDataStack
-                //addController.delegate = self
                 var selectedRowIndex = self.tableView.indexPathForSelectedRow
                 let moveVC:AddViewController = segue.destination as! AddViewController
                 moveVC.moveID = selectedRowIndex!.row

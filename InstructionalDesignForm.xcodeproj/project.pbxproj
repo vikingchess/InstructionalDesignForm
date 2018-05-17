@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5533C2AB20AC854F00BE7AA2 /* Project+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533C2A920AC854E00BE7AA2 /* Project+CoreDataClass.swift */; };
 		5533C2AC20AC854F00BE7AA2 /* Project+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5533C2AA20AC854E00BE7AA2 /* Project+CoreDataProperties.swift */; };
+		55F6549B20AE2A0000E4CA47 /* IDImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F6549A20AE2A0000E4CA47 /* IDImageView.swift */; };
 		55FF30BC20A3587300C63A4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30BB20A3587300C63A4F /* AppDelegate.swift */; };
 		55FF30BE20A3587300C63A4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30BD20A3587300C63A4F /* ViewController.swift */; };
 		55FF30C120A3587300C63A4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FF30BF20A3587300C63A4F /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		5533C2A920AC854E00BE7AA2 /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5533C2AA20AC854E00BE7AA2 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		55F6549A20AE2A0000E4CA47 /* IDImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDImageView.swift; sourceTree = "<group>"; };
 		55FF30B820A3587300C63A4F /* InstructionalDesignForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstructionalDesignForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55FF30BB20A3587300C63A4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55FF30BD20A3587300C63A4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				55FF30C220A3587300C63A4F /* InstructionalDesignForm.xcdatamodeld */,
 				55FF30DC20A48D2F00C63A4F /* IDTextField.swift */,
 				55FF30DA20A4825E00C63A4F /* IDTextView.swift */,
+				55F6549A20AE2A0000E4CA47 /* IDImageView.swift */,
 			);
 			path = InstructionalDesignForm;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				55FF30D720A3616700C63A4F /* AddViewController.swift in Sources */,
 				55FF30D920A3619100C63A4F /* FilterSortViewController:TableViewController.swift in Sources */,
 				55FF30C420A3587300C63A4F /* InstructionalDesignForm.xcdatamodeld in Sources */,
+				55F6549B20AE2A0000E4CA47 /* IDImageView.swift in Sources */,
 				55FF30D520A35BC400C63A4F /* CoreDataStack.swift in Sources */,
 				55FF30DD20A48D2F00C63A4F /* IDTextField.swift in Sources */,
 				55FF30DB20A4825E00C63A4F /* IDTextView.swift in Sources */,

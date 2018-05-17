@@ -147,7 +147,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     @IBAction func saveAction(_ sender: Any) {
-        // TODO Need to advance out of last field or receive anr error saving problem with text views?
+        // TODO Creates a double entry when updating...if then or switch statment to solve
         let currentData = Project(context: self.coreDataStack.managedContext)
         currentData.name = nameField.text
         currentData.course = courseField.text
@@ -198,6 +198,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         imageField.image = image
+        imageField.contentMode = .center
+        imageField.contentMode = .scaleAspectFit
         dismiss(animated: true, completion: nil)
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
