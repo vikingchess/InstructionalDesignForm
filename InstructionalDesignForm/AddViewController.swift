@@ -7,7 +7,6 @@
 //
 //  TODO complete clear form
 //  TODO complete save action
-//  TODO add remaining tranfer variables both on add and viewcontrller pages
 //  TODO next version have image fill entire screen when tapped
 
 
@@ -107,10 +106,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         imageField.image = moveImage
         findStatusRowNumber()
         statusPicker.selectRow(statusRow, inComponent: 0, animated: true)
-        print("\(moveDueDate)")
-        
         endDatePicker.setDate((moveDueDate! as NSDate) as Date, animated: true)
-        //TODO make this an if then statement to check for a value before updating
+        // TODO make this an if then statement to check for a value before updating
         // Protect startdate against a nil value
         guard let date = moveStartDate as Date? else {
             return
@@ -121,9 +118,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        print("\(moveID)")
-        print("\(moveData)")
-        print("\(String(describing: moveName))")
         if moveName == nil {
         // Set Start date label to todays date
         startDate.text = dateFormatter.string(from: todaysDate as Date)
@@ -141,7 +135,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
-    //TODO Future version add ability to take a picture directly in app
+    // TODO Future version add ability to take a picture directly in app
     // Connects date picker data to variable for saving
     @IBAction func onButtonPressed(_ sender: Any) {
         //selectedDate = endDatePicker.date
@@ -152,7 +146,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     @IBAction func saveAction(_ sender: Any) {
-        //TODO Need to advance out of last field or receive anr error saving problem with text views?
+        // TODO Need to advance out of last field or receive anr error saving problem with text views?
         let currentData = Project(context: self.coreDataStack.managedContext)
         currentData.name = nameField.text
         currentData.course = courseField.text
@@ -208,7 +202,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
 }
 
     //MARK: - Helper Methods
@@ -227,13 +220,14 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 udlField.text = ""
                 notesField.text = ""
                 startDate.text = dateFormatter.string(from: todaysDate as Date)
+                endDatePicker.setDate(todaysDate as Date, animated: false)
                 imageField.image = #imageLiteral(resourceName: "NoImage")
                 
                 reloadInputViews()
             }
         }
-    //String to date funtion
-    //TODO not sure if I am going to use this
+    // String to date funtion
+    // TODO not sure if I am going to use this
 extension String {
     func toDate(dateFormat format: String) -> Date {
         let dateFormatter = DateFormatter()

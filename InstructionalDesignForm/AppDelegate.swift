@@ -21,42 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
         }
         viewController.coreDataStack = coreDataStack
-        //importDataIfNeeded()
         return true
     }
-    
-    
     func applicationDidEnterBackground(_ application: UIApplication) {
         coreDataStack.saveContext()
     }
-    
-    
     func applicationWillTerminate(_ application: UIApplication) {
-        
         coreDataStack.saveContext()
     }
-    
-     func importDataIfNeeded() {
-     let fetchRequest = NSFetchRequest<Project>(entityName: "Project")
-     let count = try! coreDataStack.managedContext.count(for: fetchRequest)
-     guard count == 0 else {return}
-     
-     do {
-     let results = try coreDataStack.managedContext.fetch(fetchRequest)
-     results.forEach({coreDataStack.managedContext.delete($0) })
-     coreDataStack.saveContext()
-     importSeedData()
-     } catch let error as NSError {
-     print("Error fetching: \(error), \(error.userInfo)")
-     }
-     }
-     func importSeedData () {
-     let seedData = Project(context: coreDataStack.managedContext)
-     seedData.name = "Seed Data Name"
-     seedData.course = "Seed Data Course Name"
-     seedData.descriptiom = "Seed Data Description"
-     coreDataStack.saveContext()
-     }
-    
 }
 
