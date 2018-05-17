@@ -105,16 +105,12 @@ class ViewController: UIViewController {
                 moveVC.moveUDL = data.udl
                 moveVC.moveNotes = data.notes
                 moveVC.moveImage = UIImage(data: data.projectimage! as Data)
-                
-                //TODO retrieve image from core data and pass it into the detail screen
-                
-                
+                moveVC.moveStatus = data.status
                 data.startdate as Date?
                 guard case moveVC.moveStartDate = data.startdate as Date? else {
                     return
                 }
                 //startDate.text = dateFormatter.string(from: moveStartDate as Date)
-                //TODO need to figure how to move images and dates
             default:
                 return
             }

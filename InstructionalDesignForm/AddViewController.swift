@@ -8,6 +8,7 @@
 //  TODO complete clear form
 //  TODO complete save action
 //  TODO add remaining tranfer variables both on add and viewcontrller pages
+//  TODO next version have image fill entire screen when tapped
 
 
 
@@ -45,6 +46,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var moveStatus: String?
     //var moveEndDate: Date = NSDate() as Date
     var moveImage: UIImage?
+    var statusRow: Int = 0
     
     //MARK: - Outlets
     @IBOutlet weak var startDate: UILabel!
@@ -81,6 +83,24 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         udlField.text = moveUDL
         notesField.text = moveNotes
         imageField.image = moveImage
+        print("\(moveStatus)")
+        if let statusRowSelector = moveStatus {
+            print("\(statusRowSelector)")
+            switch statusRowSelector {
+            case "Started":
+                statusRow = 0
+            case "25% Completed":
+                statusRow = 1
+            case "50% Completed":
+                statusRow = 2
+            case "75% Completed":
+                statusRow = 3
+            case "Completed":
+                statusRow = 4
+            default:               statusRow = 3
+            }
+        }
+        statusPicker.selectRow(statusRow, inComponent: 0, animated: true)
         //TODO need to figure how to move status
         //TODO need to figure how to move dates
         //TODO make this an if then statement to check for a value before updating
