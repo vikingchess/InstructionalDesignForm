@@ -27,6 +27,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         return formatter
     }()
     var todaysDate = NSDate()
+    var selectedDate: Date = Date()
     //Variables for transferring infromation between views
     var moveID: Int = 0
     var moveData: [Project] = []
@@ -65,10 +66,29 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak var statusPicker: UIPickerView!
     @IBOutlet weak var imageField: UIImageView!
-    //Status list for picker
+    // Status list for picker
+    // TODO future version make list customizable
     private let status = ["Started", "25% Completed", "50% completed", "75% completed", "Completed"]
+    // Find row number for status, this will display the saved status for the project in the picker
+    fileprivate func findStatusRowNumber() {
+        if let statusRowSelector = moveStatus {
+            switch statusRowSelector {
+            case "Started":
+                statusRow = 0
+            case "25% Completed":
+                statusRow = 1
+            case "50% Completed":
+                statusRow = 2
+            case "75% Completed":
+                statusRow = 3
+            case "Completed":
+                statusRow = 4
+            default:
+                statusRow = 0
+            }
+        }
+    }
     
-
     fileprivate func populateDetails () {
         nameField.text = moveName
         courseField.text = moveCourse
@@ -83,25 +103,8 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         udlField.text = moveUDL
         notesField.text = moveNotes
         imageField.image = moveImage
-        print("\(moveStatus)")
-        if let statusRowSelector = moveStatus {
-            print("\(statusRowSelector)")
-            switch statusRowSelector {
-            case "Started":
-                statusRow = 0
-            case "25% Completed":
-                statusRow = 1
-            case "50% Completed":
-                statusRow = 2
-            case "75% Completed":
-                statusRow = 3
-            case "Completed":
-                statusRow = 4
-            default:               statusRow = 3
-            }
-        }
+        findStatusRowNumber()
         statusPicker.selectRow(statusRow, inComponent: 0, animated: true)
-        //TODO need to figure how to move status
         //TODO need to figure how to move dates
         //TODO make this an if then statement to check for a value before updating
         // Protect startdate against a nil value
@@ -120,7 +123,10 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         print("\(moveData)")
         print("\(String(describing: moveName))")
         if moveName == nil {
+        // Set Start date label to todays date
         startDate.text = dateFormatter.string(from: todaysDate as Date)
+        // Set Due date picker to todays date
+        endDatePicker.setDate(todaysDate as Date, animated: false)
             return
         } else {
         populateDetails ()
@@ -134,6 +140,15 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         present(imagePicker, animated: true, completion: nil)
     }
     //TODO Future version add ability to take a picture directly in app
+    // Connects date picker data to variable for saving
+    @IBAction func onButtonPressed(_ sender: Any) {
+        //selectedDate = endDatePicker.date
+        guard let selectedDueDate = endDatePicker.date as Date? else {
+            return
+        }
+        selectedDate = selectedDueDate
+        
+    }
     @IBAction func saveAction(_ sender: Any) {
         //TODO Need to advance out of last field or receive anr error saving problem with text views?
         let currentData = Project(context: self.coreDataStack.managedContext)
@@ -157,13 +172,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         }
         let imageNSData = imageData as NSData?
         currentData.projectimage = imageNSData
-        
-        
-        
-        //Grab Date from picker and put in into the duedate field
-        let date = NSDate()
-        endDatePicker.setDate(date as Date, animated: false)
-        currentData.duedate = date
+        currentData.duedate = selectedDate as NSDate
         //Grab status from picker and set the status field
         let row = statusPicker.selectedRow(inComponent: 0)
         let selectedStatus = status[row]

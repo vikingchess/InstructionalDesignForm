@@ -147,7 +147,11 @@ extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: dataCellIdentifier, for: indexPath)
         let data = currentData[indexPath.row]
-        cell.textLabel?.text = "\(data.name!), has status \(data.status!)"
+        // Set end date to display as a string
+        let tempEndDate = data.duedate as Date?
+        let displayEndDate = dateFormatter.string(from: tempEndDate!)
+        // Insert information into cells
+        cell.textLabel?.text = "\(data.name!), has status \(data.status!) is due on \(displayEndDate)"
         cell.detailTextLabel?.text = "\(data.course!) is being taught by \(data.instructor!)"
         return cell
     }

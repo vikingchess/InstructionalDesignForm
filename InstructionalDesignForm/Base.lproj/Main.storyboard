@@ -353,6 +353,9 @@
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="536497200">
                                     <!--2018-01-01 11:00:00 +0000-->
                                 </date>
+                                <connections>
+                                    <action selector="onButtonPressed:" destination="WZe-v6-NDV" eventType="valueChanged" id="p6B-5H-IAo"/>
+                                </connections>
                             </datePicker>
                             <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ed3-GH-38q">
                                 <rect key="frame" x="524" y="20" width="290" height="118"/>
