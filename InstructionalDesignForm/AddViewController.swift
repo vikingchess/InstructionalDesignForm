@@ -117,6 +117,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     //MARK: - View Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
         imagePicker.delegate = self
         if moveName == nil {
         // Set Start date label to todays date
