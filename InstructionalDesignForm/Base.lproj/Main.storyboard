@@ -377,12 +377,16 @@
                                     <outlet property="delegate" destination="WZe-v6-NDV" id="qxP-op-0Qo"/>
                                 </connections>
                             </pickerView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImage" translatesAutoresizingMaskIntoConstraints="NO" id="Sao-Mz-YfF" customClass="IDImageView" customModule="InstructionalDesignForm" customModuleProvider="target">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NoImage" translatesAutoresizingMaskIntoConstraints="NO" id="Sao-Mz-YfF">
                                 <rect key="frame" x="380" y="280" width="429" height="429"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="429" id="GBO-cy-MRy"/>
                                     <constraint firstAttribute="width" constant="429" id="YUw-bI-Y0H"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="sZY-p7-Btx" appends="YES" id="OWt-4g-tLR"/>
+                                </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Instructor" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="poF-r5-ltY" customClass="IDTextField" customModule="InstructionalDesignForm" customModuleProvider="target">
                                 <rect key="frame" x="20" y="155" width="357" height="30"/>
@@ -627,6 +631,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N66-rW-uej" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sZY-p7-Btx">
+                    <connections>
+                        <action selector="imageTapped:" destination="WZe-v6-NDV" id="K58-6b-db3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-655.39568345323744" y="396.58273381294964"/>
         </scene>

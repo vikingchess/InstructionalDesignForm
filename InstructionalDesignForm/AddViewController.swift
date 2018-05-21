@@ -5,10 +5,7 @@
 //  Created by David Flom on 5/9/18.
 //  Copyright © 2018 David Flom. All rights reserved.
 //
-//  TODO complete clear form
-//  TODO complete save action
-//  TODO next version have image fill entire screen when tapped
-
+//  TODO complete save action Saving duplicates not updating
 
 
 import UIKit
@@ -107,7 +104,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         findStatusRowNumber()
         statusPicker.selectRow(statusRow, inComponent: 0, animated: true)
         endDatePicker.setDate((moveDueDate! as NSDate) as Date, animated: true)
-        // TODO make this an if then statement to check for a value before updating
         // Protect startdate against a nil value
         guard let date = moveStartDate as Date? else {
             return
@@ -136,7 +132,25 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
-    // TODO Future version add ability to take a picture directly in app
+    // Tapping on the image will change to a full screen view of the image
+    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image:imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action:  #selector(dismissFullScreenImageView))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @objc func dismissFullScreenImageView(_ sender: UITapGestureRecognizer){
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
     // Connects date picker data to variable for saving
     @IBAction func onButtonPressed(_ sender: Any) {
         //selectedDate = endDatePicker.date
@@ -147,7 +161,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     @IBAction func saveAction(_ sender: Any) {
-        // TODO Creates a double entry when updating...if then or switch statment to solve
         let currentData = Project(context: self.coreDataStack.managedContext)
         currentData.name = nameField.text
         currentData.course = courseField.text
