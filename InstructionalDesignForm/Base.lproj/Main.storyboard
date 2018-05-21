@@ -269,11 +269,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="courseNameSort" destination="AZI-QW-SaI" id="ltG-fv-PiB"/>
-                        <outlet property="numberOfCompletedProjects" destination="KFO-az-jat" id="3Uj-S8-mGj"/>
+                        <outlet property="completedProjectsCell" destination="FzI-XG-ayI" id="d1X-Pa-JCB"/>
+                        <outlet property="completedProjectsLabel" destination="KFO-az-jat" id="DFh-m2-mOF"/>
                         <outlet property="numberOfProjects" destination="Uo1-TA-VII" id="knp-yF-Gf1"/>
-                        <outlet property="numberOfStartedProjects" destination="rEV-fO-HFb" id="dLu-Zh-BjY"/>
-                        <outlet property="projectNameSort" destination="Bsc-bi-L3G" id="RGP-fR-EBn"/>
+                        <outlet property="sortByCourseCell" destination="4vX-er-3cJ" id="wHG-cx-ULw"/>
+                        <outlet property="sortByNameCell" destination="tW5-3n-Y1Z" id="FqK-sy-xq9"/>
+                        <outlet property="startedProjectsCell" destination="jaE-4j-Npl" id="Lxr-yY-XwZ"/>
+                        <outlet property="startedProjectsLabel" destination="rEV-fO-HFb" id="XWO-tb-hNO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSg-av-RkW" userLabel="First Responder" sceneMemberID="firstResponder"/>

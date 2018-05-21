@@ -53,10 +53,21 @@ class FilterSortViewController_TableViewController: UITableViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var numberOfProjects: UILabel!
-    @IBOutlet weak var numberOfStartedProjects: UILabel!
-    @IBOutlet weak var numberOfCompletedProjects: UILabel!
-    @IBOutlet weak var projectNameSort: UILabel!
-    @IBOutlet weak var courseNameSort: UILabel!
+    @IBOutlet weak var startedProjectsLabel: UILabel!
+    @IBOutlet weak var startedProjectsCell: UITableViewCell!
+    @IBOutlet weak var completedProjectsCell: UITableViewCell!
+    @IBOutlet weak var completedProjectsLabel: UILabel!
+    @IBOutlet weak var sortByNameCell: UITableViewCell!
+    @IBOutlet weak var sortByCourseCell: UITableViewCell!
+    
+    
+    
+    
+    
+    //@IBOutlet weak var numberOfStartedProjects: UILabel!
+    //@IBOutlet weak var numberOfCompletedProjects: UILabel!
+    //@IBOutlet weak var projectNameSort: UILabel!
+    //@IBOutlet weak var courseNameSort: UILabel!
     
     //MARK: - View LifeCycle
     override func viewDidLoad() {
@@ -91,7 +102,7 @@ class FilterSortViewController_TableViewController: UITableViewController {
             do {
                 let countResult = try coreDataStack.managedContext.fetch(fetchRequest)
                 let count = countResult.first!.intValue
-                numberOfStartedProjects.text = "\(count) projects that have been started but not worked on"
+                startedProjectsLabel.text = "\(count) projects that have been started but not worked on"
             } catch let error as NSError {
                 print("could not fetch \(error)")
             }
@@ -105,7 +116,7 @@ class FilterSortViewController_TableViewController: UITableViewController {
             do {
                 let countResult = try coreDataStack.managedContext.fetch(fetchRequest)
                 let count = countResult.first!.intValue
-                numberOfCompletedProjects.text = "\(count) projects that have been completed"
+                completedProjectsLabel.text = "\(count) projects that have been completed"
             } catch let error as NSError {
                 print("could not fetch \(error)")
             }
@@ -120,13 +131,13 @@ class FilterSortViewController_TableViewController: UITableViewController {
             }
             //Status Selection
             switch cell {
-            case numberOfStartedProjects:
+            case startedProjectsCell:
                 selectedPredicate = startedProjects
-            case numberOfCompletedProjects:
+            case completedProjectsCell:
                 selectedPredicate = completedProjects
-            case projectNameSort:
+            case sortByNameCell:
                 selectedSortDescriptor = nameSortDescriptor
-            case courseNameSort:
+            case sortByCourseCell:
                 selectedSortDescriptor = courseSortDescriptor
                 
             default:
