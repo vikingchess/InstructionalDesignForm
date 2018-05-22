@@ -114,6 +114,10 @@ class ViewController: UIViewController {
                 moveVC.moveStatus = data.status
                 moveVC.moveDueDate = data.duedate as Date?
                 moveVC.moveStartDate = data.startdate as Date?
+                let projectToDelete = currentData[selectedRowIndex!.row]
+                coreDataStack.managedContext.delete(projectToDelete)
+                //currentData.remove(at: indexPath.row)
+                coreDataStack.saveContext()
                 
             default:
                 return

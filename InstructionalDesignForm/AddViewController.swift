@@ -109,8 +109,40 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             return
         }
         startDate.text = dateFormatter.string(from: (date))
+        
     }
     //MARK: - View Life cycle
+    override func viewDidDisappear(_ animated: Bool) {
+        let currentData = Project(context: self.coreDataStack.managedContext)
+        currentData.name = nameField.text
+        currentData.course = courseField.text
+        currentData.descriptiom = descriptionField.text
+        currentData.instructor = instructorField.text
+        currentData.location = locationField.text
+        currentData.learningobjectives = learningObjectivesField.text
+        currentData.learningactivities = learningActvitiesField.text
+        currentData.preassessment = preassessmentField.text
+        currentData.formative = formativeField.text
+        currentData.summative = summativeField.text
+        currentData.udl = udlField.text
+        currentData.notes = notesField.text
+        currentData.startdate = todaysDate
+        //Convert image to NSData type for binary storage in core data
+        guard let imageData = UIImageJPEGRepresentation(imageField.image!, 1) else {
+            print("JPG Conversion error")
+            return
+        }
+        let imageNSData = imageData as NSData?
+        currentData.projectimage = imageNSData
+        currentData.duedate = selectedDate as NSDate
+        //Grab status from picker and set the status field
+        let row = statusPicker.selectedRow(inComponent: 0)
+        let selectedStatus = status[row]
+        currentData.status = selectedStatus
+        
+        self.coreDataStack.saveContext()
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -123,6 +155,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             return
         } else {
         populateDetails ()
+        //coreDataStack.saveContext()
         }
     }
 
