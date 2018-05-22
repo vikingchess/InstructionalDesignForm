@@ -262,7 +262,7 @@
                                 <segue destination="OWY-hs-WmV" kind="unwind" unwindAction="unwindToProjectListViewController:" id="WqC-Ia-mrb"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Search" id="Xbd-t2-k6q">
+                        <barButtonItem key="rightBarButtonItem" title="Sort and Filter" id="Xbd-t2-k6q">
                             <connections>
                                 <action selector="searchAction:" destination="bqR-pf-68C" id="qRj-eJ-bIX"/>
                             </connections>
