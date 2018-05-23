@@ -5,8 +5,7 @@
 //  Created by David Flom on 5/9/18.
 //  Copyright © 2018 David Flom. All rights reserved.
 //
-//  TODO make sure their is a project name before saving
-//  TODO Add ability to use camera for picture
+//  TODO fix ascpect ratio on views..make the same
 //  TODO Refactor the process of grabbing the information from the label and text views
 //  TODO remove print to console commands
 
@@ -162,7 +161,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             return
         } else {
         populateDetails ()
-        //coreDataStack.saveContext()
         }
     }
 
@@ -190,6 +188,17 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = false
         sender.view?.removeFromSuperview()
+    }
+    // Use camera to capture image
+    @IBAction func takePhoto(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true, completion: nil)
+        } else {
+            // TODO change this to an alert message
+            print("No Camera")
+        }
     }
     // Connects date picker data to variable for saving
     @IBAction func onButtonPressed(_ sender: Any) {

@@ -532,6 +532,13 @@
                                     <action selector="onButtonPressed:" destination="WZe-v6-NDV" eventType="valueChanged" id="p6B-5H-IAo"/>
                                 </connections>
                             </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nM5-rL-SPa">
+                                <rect key="frame" x="526" y="717" width="54" height="30"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="takePhoto:" destination="WZe-v6-NDV" eventType="touchUpInside" id="Nzo-6z-Igp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -597,12 +604,14 @@
                             <constraint firstItem="ed3-GH-38q" firstAttribute="trailing" secondItem="tVy-9s-c80" secondAttribute="trailing" id="ijd-hH-EKR"/>
                             <constraint firstItem="6ol-ft-fc9" firstAttribute="trailing" secondItem="bxn-VL-Ufm" secondAttribute="trailing" id="jY8-mG-uZp"/>
                             <constraint firstItem="Rf3-vY-Vzh" firstAttribute="leading" secondItem="poF-r5-ltY" secondAttribute="leading" id="jjd-cT-aVS"/>
+                            <constraint firstItem="nM5-rL-SPa" firstAttribute="baseline" secondItem="4OP-Gq-LWx" secondAttribute="baseline" id="lxT-PT-ETa"/>
                             <constraint firstItem="jgt-KR-eO7" firstAttribute="trailing" secondItem="6ol-ft-fc9" secondAttribute="trailing" id="lyn-hH-VtV"/>
                             <constraint firstItem="hJ6-cN-1eB" firstAttribute="baseline" secondItem="Svz-J1-Fkh" secondAttribute="baseline" id="nBS-jp-vE0"/>
                             <constraint firstItem="4zO-lb-gXm" firstAttribute="leading" secondItem="fVM-WM-JP6" secondAttribute="leading" id="nlF-n4-zeY"/>
                             <constraint firstItem="1x8-Gx-7fv" firstAttribute="leading" secondItem="Rf3-vY-Vzh" secondAttribute="trailing" constant="8" symbolic="YES" id="pCA-15-uVO"/>
                             <constraint firstItem="jVd-sK-Huq" firstAttribute="top" secondItem="6ol-ft-fc9" secondAttribute="bottom" constant="8" symbolic="YES" id="pGP-Vj-D6R"/>
                             <constraint firstItem="NQB-BG-McL" firstAttribute="leading" secondItem="jgt-KR-eO7" secondAttribute="leading" id="pnn-66-nBa"/>
+                            <constraint firstItem="nM5-rL-SPa" firstAttribute="centerX" secondItem="zJb-qF-Qyy" secondAttribute="centerX" id="qMO-4g-A2T"/>
                             <constraint firstItem="6fX-FA-1YE" firstAttribute="leading" secondItem="1x8-Gx-7fv" secondAttribute="leading" id="qUb-BS-EjE"/>
                             <constraint firstItem="NQB-BG-McL" firstAttribute="leading" secondItem="6ol-ft-fc9" secondAttribute="leading" id="rN5-3c-ZGk"/>
                             <constraint firstItem="Uw9-Qy-u1n" firstAttribute="leading" secondItem="LvI-ry-OUx" secondAttribute="leadingMargin" id="ti6-fM-FG8"/>
