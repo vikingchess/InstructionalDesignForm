@@ -5,7 +5,10 @@
 //  Created by David Flom on 5/9/18.
 //  Copyright © 2018 David Flom. All rights reserved.
 //
-//  TODO complete save action Saving duplicates not updating
+//  TODO make sure their is a project name before saving
+//  TODO Add ability to use camera for picture
+//  TODO Refactor the process of grabbing the information from the label and text views
+//  TODO remove print to console commands
 
 
 import UIKit
@@ -113,6 +116,10 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     //MARK: - View Life cycle
     override func viewDidDisappear(_ animated: Bool) {
+        // check that there is an object to save beforing saving
+        if nameField.text == "" {
+            return
+        } else {
         let currentData = Project(context: self.coreDataStack.managedContext)
         currentData.name = nameField.text
         currentData.course = courseField.text
@@ -141,7 +148,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         currentData.status = selectedStatus
         
         self.coreDataStack.saveContext()
-
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()

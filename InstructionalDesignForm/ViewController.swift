@@ -5,7 +5,7 @@
 //  Created by David Flom on 5/9/18.
 //  Copyright © 2018 David Flom. All rights reserved.
 //
-// TODO Filter sort options not transferring to opeing storyboard
+//
 
 import UIKit
 import CoreData
