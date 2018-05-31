@@ -6,7 +6,6 @@
 //  Copyright © 2018 David Flom. All rights reserved.
 //
 //  TODO fix ascpect ratio on views..make the same
-//  TODO Refactor the process of grabbing the information from the label and text views
 //  TODO remove print to console commands
 
 
@@ -114,38 +113,17 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     //MARK: - View Life cycle
+    override func viewWillDisappear(_ animated: Bool) {
+        print("will disappear")
+    }
     override func viewDidDisappear(_ animated: Bool) {
         // check that there is an object to save beforing saving
         if nameField.text == "" {
             return
-        } else {
-        let currentData = Project(context: self.coreDataStack.managedContext)
-        currentData.name = nameField.text
-        currentData.course = courseField.text
-        currentData.descriptiom = descriptionField.text
-        currentData.instructor = instructorField.text
-        currentData.location = locationField.text
-        currentData.learningobjectives = learningObjectivesField.text
-        currentData.learningactivities = learningActvitiesField.text
-        currentData.preassessment = preassessmentField.text
-        currentData.formative = formativeField.text
-        currentData.summative = summativeField.text
-        currentData.udl = udlField.text
-        currentData.notes = notesField.text
-        currentData.startdate = todaysDate
-        //Convert image to NSData type for binary storage in core data
-        guard let imageData = UIImageJPEGRepresentation(imageField.image!, 1) else {
-            print("JPG Conversion error")
+        } else if imageField.image == nil {
             return
-        }
-        let imageNSData = imageData as NSData?
-        currentData.projectimage = imageNSData
-        currentData.duedate = selectedDate as NSDate
-        //Grab status from picker and set the status field
-        let row = statusPicker.selectedRow(inComponent: 0)
-        let selectedStatus = status[row]
-        currentData.status = selectedStatus
-        
+        } else {
+        extractDataFromForm()
         self.coreDataStack.saveContext()
         }
     }
@@ -210,33 +188,7 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
     @IBAction func saveAction(_ sender: Any) {
-        let currentData = Project(context: self.coreDataStack.managedContext)
-        currentData.name = nameField.text
-        currentData.course = courseField.text
-        currentData.descriptiom = descriptionField.text
-        currentData.instructor = instructorField.text
-        currentData.location = locationField.text
-        currentData.learningobjectives = learningObjectivesField.text
-        currentData.learningactivities = learningActvitiesField.text
-        currentData.preassessment = preassessmentField.text
-        currentData.formative = formativeField.text
-        currentData.summative = summativeField.text
-        currentData.udl = udlField.text
-        currentData.notes = notesField.text
-        currentData.startdate = todaysDate
-        //Convert image to NSData type for binary storage in core data
-        guard let imageData = UIImageJPEGRepresentation(imageField.image!, 1) else {
-            print("JPG Conversion error")
-            return
-        }
-        let imageNSData = imageData as NSData?
-        currentData.projectimage = imageNSData
-        currentData.duedate = selectedDate as NSDate
-        //Grab status from picker and set the status field
-        let row = statusPicker.selectedRow(inComponent: 0)
-        let selectedStatus = status[row]
-        currentData.status = selectedStatus
-        
+        extractDataFromForm()
         self.coreDataStack.saveContext()
         clearForm()
     }
@@ -290,6 +242,35 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                 
                 reloadInputViews()
             }
+            func extractDataFromForm() {
+                let currentData = Project(context: self.coreDataStack.managedContext)
+                currentData.name = nameField.text
+                currentData.course = courseField.text
+                currentData.descriptiom = descriptionField.text
+                currentData.instructor = instructorField.text
+                currentData.location = locationField.text
+                currentData.learningobjectives = learningObjectivesField.text
+                currentData.learningactivities = learningActvitiesField.text
+                currentData.preassessment = preassessmentField.text
+                currentData.formative = formativeField.text
+                currentData.summative = summativeField.text
+                currentData.udl = udlField.text
+                currentData.notes = notesField.text
+                currentData.startdate = todaysDate
+                //Convert image to NSData type for binary storage in core data
+                guard let imageData = UIImageJPEGRepresentation(imageField.image!, 1) else {
+                    print("JPG Conversion error")
+                    return
+                }
+                let imageNSData = imageData as NSData?
+                currentData.projectimage = imageNSData
+                currentData.duedate = selectedDate as NSDate
+                //Grab status from picker and set the status field
+                let row = statusPicker.selectedRow(inComponent: 0)
+                let selectedStatus = status[row]
+                currentData.status = selectedStatus
+                
+            }
         }
     // String to date funtion
     // TODO not sure if I am going to use this
@@ -301,4 +282,16 @@ extension String {
         return dateFormatter.date(from: self)!
     }
 }
-
+/* TODO Remove code saving it to transfer to view controller
+ if nameField.text == "" {
+ print("alert loop")
+ //TODO Add alert message here
+ let alert = UIAlertController(title: "No data will be saved", message: "The Project Name field is required to save a project", preferredStyle: .alert)
+ alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { (action) in alert.dismiss(animated: true, completion: nil)
+ }))
+ self.present(alert, animated: true, completion: nil)
+ } else {
+ print("lower save loop")
+ 
+ }
+ */

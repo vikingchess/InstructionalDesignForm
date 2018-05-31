@@ -83,7 +83,6 @@ class ViewController: UIViewController {
             switch identifier {
             case "toFilterViewController":
                 let controller = segue.destination as? UINavigationController
-                
                 let filterVC = controller?.topViewController as? FilterSortViewController_TableViewController
                 filterVC?.coreDataStack = self.coreDataStack
                 filterVC?.delegate = self
@@ -184,7 +183,6 @@ class ViewController: UIViewController {
     extension ViewController: UITableViewDelegate {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             let rowValue = currentData[indexPath.row]
-            print("Row \(rowValue)")
         }
     }
 
