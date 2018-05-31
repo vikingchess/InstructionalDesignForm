@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return true
         }
         viewController.coreDataStack = coreDataStack
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-5241767368323444~7122932500")
         return true
     }
     func applicationDidEnterBackground(_ application: UIApplication) {

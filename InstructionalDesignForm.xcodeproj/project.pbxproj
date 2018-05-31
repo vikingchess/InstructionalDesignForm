@@ -21,9 +21,12 @@
 		55FF30D920A3619100C63A4F /* FilterSortViewController:TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */; };
 		55FF30DB20A4825E00C63A4F /* IDTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30DA20A4825E00C63A4F /* IDTextView.swift */; };
 		55FF30DD20A48D2F00C63A4F /* IDTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF30DC20A48D2F00C63A4F /* IDTextField.swift */; };
+		A1EDF11EBA575CBEF0F0803F /* Pods_InstructionalDesignForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56B56216D88004F87CC49DA0 /* Pods_InstructionalDesignForm.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E1F41530B9E13BE39874044 /* Pods-InstructionalDesignForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstructionalDesignForm.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstructionalDesignForm/Pods-InstructionalDesignForm.release.xcconfig"; sourceTree = "<group>"; };
+		4DAF28809D7786A416CF854C /* Pods-InstructionalDesignForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstructionalDesignForm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstructionalDesignForm/Pods-InstructionalDesignForm.debug.xcconfig"; sourceTree = "<group>"; };
 		5533C2A920AC854E00BE7AA2 /* Project+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5533C2AA20AC854E00BE7AA2 /* Project+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		55F6549A20AE2A0000E4CA47 /* IDImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDImageView.swift; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 		55FF30D820A3619100C63A4F /* FilterSortViewController:TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FilterSortViewController:TableViewController.swift"; sourceTree = "<group>"; };
 		55FF30DA20A4825E00C63A4F /* IDTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDTextView.swift; sourceTree = "<group>"; };
 		55FF30DC20A48D2F00C63A4F /* IDTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDTextField.swift; sourceTree = "<group>"; };
+		56B56216D88004F87CC49DA0 /* Pods_InstructionalDesignForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstructionalDesignForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,12 +52,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1EDF11EBA575CBEF0F0803F /* Pods_InstructionalDesignForm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145F15AB53F3F9042D9EC9C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56B56216D88004F87CC49DA0 /* Pods_InstructionalDesignForm.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		55FF30AF20A3587300C63A4F = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +75,8 @@
 				55FF30D420A35BC400C63A4F /* CoreDataStack.swift */,
 				55FF30BA20A3587300C63A4F /* InstructionalDesignForm */,
 				55FF30B920A3587300C63A4F /* Products */,
+				B31A9EE368F1B16D34AB8272 /* Pods */,
+				145F15AB53F3F9042D9EC9C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +108,15 @@
 			path = InstructionalDesignForm;
 			sourceTree = "<group>";
 		};
+		B31A9EE368F1B16D34AB8272 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4DAF28809D7786A416CF854C /* Pods-InstructionalDesignForm.debug.xcconfig */,
+				1E1F41530B9E13BE39874044 /* Pods-InstructionalDesignForm.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -100,9 +124,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55FF30CD20A3587E00C63A4F /* Build configuration list for PBXNativeTarget "InstructionalDesignForm" */;
 			buildPhases = (
+				BB1C6748491411CEA616ADFB /* [CP] Check Pods Manifest.lock */,
 				55FF30B420A3587300C63A4F /* Sources */,
 				55FF30B520A3587300C63A4F /* Frameworks */,
 				55FF30B620A3587300C63A4F /* Resources */,
+				F5C9297147B508A59D708EAF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,6 +189,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BB1C6748491411CEA616ADFB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InstructionalDesignForm-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5C9297147B508A59D708EAF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-InstructionalDesignForm/Pods-InstructionalDesignForm-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InstructionalDesignForm/Pods-InstructionalDesignForm-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55FF30B420A3587300C63A4F /* Sources */ = {
@@ -321,6 +388,7 @@
 		};
 		55FF30CE20A3587E00C63A4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DAF28809D7786A416CF854C /* Pods-InstructionalDesignForm.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -342,6 +410,7 @@
 		};
 		55FF30CF20A3587E00C63A4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E1F41530B9E13BE39874044 /* Pods-InstructionalDesignForm.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

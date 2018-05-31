@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LaS-dk-8U7">
-                                <rect key="frame" x="16" y="64" width="798" height="1028"/>
+                                <rect key="frame" x="16" y="64" width="798" height="990"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataCell" textLabel="t3C-XH-bhX" detailTextLabel="33F-ez-ApE" style="IBUITableViewCellStyleSubtitle" id="Wjl-uG-Xm8">
@@ -74,13 +74,23 @@
                                     <outlet property="delegate" destination="5xP-g2-qHW" id="ECr-EK-R82"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OJ8-ot-svG" customClass="GADBannerView">
+                                <rect key="frame" x="0.0" y="1062" width="834" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QqJ-8h-8hj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LaS-dk-8U7" firstAttribute="trailing" secondItem="Yz3-hn-8eD" secondAttribute="trailingMargin" id="G0c-Z8-xVb"/>
-                            <constraint firstAttribute="bottom" secondItem="LaS-dk-8U7" secondAttribute="bottom" constant="20" symbolic="YES" id="igu-Rs-f1e"/>
+                            <constraint firstAttribute="bottom" secondItem="OJ8-ot-svG" secondAttribute="bottom" id="LkH-LG-UfD"/>
+                            <constraint firstItem="OJ8-ot-svG" firstAttribute="leading" secondItem="c9w-me-YSq" secondAttribute="leading" id="YfY-Jv-ovH"/>
+                            <constraint firstAttribute="bottom" secondItem="LaS-dk-8U7" secondAttribute="bottom" constant="58" id="igu-Rs-f1e"/>
                             <constraint firstItem="LaS-dk-8U7" firstAttribute="leading" secondItem="c9w-me-YSq" secondAttribute="leading" constant="16" id="s7T-yw-RHE"/>
                             <constraint firstItem="LaS-dk-8U7" firstAttribute="top" secondItem="c9w-me-YSq" secondAttribute="top" id="vhz-QY-Kts"/>
+                            <constraint firstItem="OJ8-ot-svG" firstAttribute="trailing" secondItem="c9w-me-YSq" secondAttribute="trailing" id="vv6-x2-PQI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c9w-me-YSq"/>
                     </view>
@@ -106,12 +116,13 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bannerView" destination="OJ8-ot-svG" id="aeF-X7-Z3M"/>
                         <outlet property="tableView" destination="LaS-dk-8U7" id="xfJ-Ds-04e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFg-7o-rIw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1495" y="23"/>
+            <point key="canvasLocation" x="-1495.6834532374103" y="22.661870503597122"/>
         </scene>
         <!--Sort and Filter Options-->
         <scene sceneID="32i-mh-8hN">

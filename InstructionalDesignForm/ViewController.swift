@@ -9,6 +9,8 @@
 
 import UIKit
 import CoreData
+import Firebase
+
 
 class ViewController: UIViewController {
     // MARK: - Properties
@@ -40,6 +42,7 @@ class ViewController: UIViewController {
     
     //MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bannerView: GADBannerView!
     
     //MARK: - View Life Cycle
     override func viewDidAppear(_ animated: Bool) {
@@ -68,6 +71,10 @@ class ViewController: UIViewController {
         } catch let error as NSError {
             print(" Could not fetch \(error)")
         }
+        //display and load ads in bottom section
+        bannerView.adUnitID = "ca-app-pub-5241767368323444/8104841685"
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
     }
     
     //MARK: - Actions
