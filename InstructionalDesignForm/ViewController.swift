@@ -155,12 +155,15 @@ class ViewController: UIViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: dataCellIdentifier, for: indexPath)
         let data = currentData[indexPath.row]
-        // Set end date to display as a string
+        //TODO check for empty project name and delete entry
+        // Set dates to display as strings
         let tempEndDate = data.duedate as Date?
         let displayEndDate = dateFormatter.string(from: tempEndDate!)
+        let tempStartDate = data.startdate as Date?
+        let displayStartDate = dateFormatter.string(from: tempStartDate!)
         // Insert information into cells
-        cell.textLabel?.text = "\(data.name!), has status \(data.status!) is due on \(displayEndDate)"
-        cell.detailTextLabel?.text = "\(data.course!) is being taught by \(data.instructor!)"
+        cell.textLabel?.text = "\(data.name!) entered on \(displayStartDate) is \(data.status!)"
+        cell.detailTextLabel?.text = "\(data.course!) is being taught by \(data.instructor!). The next milestone is due on \(displayEndDate)"
         return cell
     }
 

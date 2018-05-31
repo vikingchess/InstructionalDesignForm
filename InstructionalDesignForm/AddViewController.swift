@@ -5,88 +5,86 @@
 //  Created by David Flom on 5/9/18.
 //  Copyright © 2018 David Flom. All rights reserved.
 //
-//  TODO fix ascpect ratio on views..make the same
-//  TODO remove print to console commands
 
 
 import UIKit
 import CoreData
 
 class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    //MARK: - Properties
-    var coreDataStack: CoreDataStack!
-    let imagePicker = UIImagePickerController()
-    //setup auto start date label formatting Date to String
-    var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        return formatter
-    }()
-    var statusRow: Int = 0
-    // Initialize date variable for use
-    var todaysDate = NSDate()
-    var selectedDate: Date = Date()
-    // Variables for transferring infromation between views
-    var moveID: Int = 0
-    var moveData: [Project] = []
-    var moveName: String?
-    var moveStartDate: Date?
-    var moveDueDate: Date?
-    var moveCourse: String?
-    var moveDescription: String?
-    var moveInstructor: String?
-    var moveLocation: String?
-    var moveLO: String?
-    var moveLA: String?
-    var movePre:String?
-    var moveFormative: String?
-    var moveSummative: String?
-    var moveUDL: String?
-    var moveNotes: String?
-    var moveStatus: String?
-    var moveImage: UIImage?
+        //MARK: - Properties
+        var coreDataStack: CoreDataStack!
+        let imagePicker = UIImagePickerController()
+        //setup auto start date label formatting Date to String
+        var dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            formatter.timeStyle = .none
+            return formatter
+        }()
+        var statusRow: Int = 0
+        // Initialize date variable for use
+        var todaysDate = NSDate()
+        var selectedDate: Date = Date()
+        // Variables for transferring infromation between views
+        var moveID: Int = 0
+        var moveData: [Project] = []
+        var moveName: String?
+        var moveStartDate: Date?
+        var moveDueDate: Date?
+        var moveCourse: String?
+        var moveDescription: String?
+        var moveInstructor: String?
+        var moveLocation: String?
+        var moveLO: String?
+        var moveLA: String?
+        var movePre:String?
+        var moveFormative: String?
+        var moveSummative: String?
+        var moveUDL: String?
+        var moveNotes: String?
+        var moveStatus: String?
+        var moveImage: UIImage?
 
     
-    //MARK: - Outlets
-    @IBOutlet weak var startDate: UILabel!
-    @IBOutlet weak var nameField: IDTextField!
-    @IBOutlet weak var courseField: IDTextField!
-    @IBOutlet weak var descriptionField: IDTextField!
-    @IBOutlet weak var instructorField: IDTextField!
-    @IBOutlet weak var locationField: IDTextField!
-    @IBOutlet weak var learningObjectivesField: IDTextView!
-    @IBOutlet weak var learningActvitiesField: IDTextView!
-    @IBOutlet weak var preassessmentField: IDTextView!
-    @IBOutlet weak var formativeField: IDTextView!
-    @IBOutlet weak var summativeField: IDTextView!
-    @IBOutlet weak var udlField: IDTextView!
-    @IBOutlet weak var notesField: IDTextView!
-    @IBOutlet weak var endDatePicker: UIDatePicker!
-    @IBOutlet weak var statusPicker: UIPickerView!
-    @IBOutlet weak var imageField: UIImageView!
-    // Status list for picker
-    // TODO future version make list customizable
-    private let status = ["Started", "25% Completed", "50% completed", "75% completed", "Completed"]
-    // Find row number for status, this will display the saved status for the project in the picker
-    fileprivate func findStatusRowNumber() {
-        if let statusRowSelector = moveStatus {
-            switch statusRowSelector {
-            case "Started":
-                statusRow = 0
-            case "25% Completed":
-                statusRow = 1
-            case "50% Completed":
-                statusRow = 2
-            case "75% Completed":
-                statusRow = 3
-            case "Completed":
-                statusRow = 4
-            default:
-                statusRow = 0
+        //MARK: - Outlets
+        @IBOutlet weak var startDate: UILabel!
+        @IBOutlet weak var nameField: IDTextField!
+        @IBOutlet weak var courseField: IDTextField!
+        @IBOutlet weak var descriptionField: IDTextField!
+        @IBOutlet weak var instructorField: IDTextField!
+        @IBOutlet weak var locationField: IDTextField!
+        @IBOutlet weak var learningObjectivesField: IDTextView!
+        @IBOutlet weak var learningActvitiesField: IDTextView!
+        @IBOutlet weak var preassessmentField: IDTextView!
+        @IBOutlet weak var formativeField: IDTextView!
+        @IBOutlet weak var summativeField: IDTextView!
+        @IBOutlet weak var udlField: IDTextView!
+        @IBOutlet weak var notesField: IDTextView!
+        @IBOutlet weak var endDatePicker: UIDatePicker!
+        @IBOutlet weak var statusPicker: UIPickerView!
+        @IBOutlet weak var imageField: UIImageView!
+        // Status list for picker
+        // TODO future version make list customizable
+        private let status = ["Started", "25% Completed", "50% completed", "75% completed", "Completed"]
+        // Find row number for status, this will display the saved status for the project in the picker
+        fileprivate func findStatusRowNumber() {
+            if let statusRowSelector = moveStatus {
+                switch statusRowSelector {
+                case "Started":
+                    statusRow = 0
+                case "25% Completed":
+                    statusRow = 1
+                case "50% Completed":
+                    statusRow = 2
+                case "75% Completed":
+                    statusRow = 3
+                case "Completed":
+                    statusRow = 4
+                default:
+                    statusRow = 0
+                }
             }
         }
-    }
     
     fileprivate func populateDetails () {
         nameField.text = moveName
@@ -114,7 +112,6 @@ class AddViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     //MARK: - View Life cycle
     override func viewWillDisappear(_ animated: Bool) {
-        print("will disappear")
     }
     override func viewDidDisappear(_ animated: Bool) {
         // check that there is an object to save beforing saving
