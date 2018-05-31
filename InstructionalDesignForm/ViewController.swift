@@ -192,7 +192,7 @@ class ViewController: UIViewController {
     // MARK: - UITableViewDelegate
     extension ViewController: UITableViewDelegate {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let rowValue = currentData[indexPath.row]
+            //let rowValue = currentData[indexPath.row]
         }
     }
 
